@@ -15,8 +15,9 @@ namespace DataLayer
         private int month;
         private int year;
         private float price;
-        //product list to be added to constructor
-        InvoiceOut(WarehouseWorker worker, Client receiver, float price, string invoiceNumber, int day, int month, int year)
+        private List<Product> sentProducts;
+
+        InvoiceOut(WarehouseWorker worker, Client receiver, float price, string invoiceNumber, int day, int month, int year, List<Product> products)
         {
             this.sentBy = worker;
             this.receivedBy = receiver;
@@ -24,13 +25,17 @@ namespace DataLayer
             Day = day;
             Month = month;
             Year = year;
+            SentProducts = products;
         }
 
+        public IUser SentBy { get { return sentBy; } set { sentBy = value; } }
+        public IUser ReceivedBy { get { return receivedBy; } set { receivedBy = value; } }
         public string InvoiceNumber { get { return invoiceNumber; } set { invoiceNumber = value; } }
         public int Day { get { return day; } set { day = value; } }
         public int Month { get { return month; } set { month = value; } }
         public int Year { get { return year; } set { year = value; } }
         public float Price { get { return price; } set { price = value; } }
+        public List<Product> SentProducts { get { return sentProducts; } set { sentProducts = value;} }
 
         public string getDate()
         {

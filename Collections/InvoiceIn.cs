@@ -14,14 +14,30 @@ namespace DataLayer
         private int day;
         private int month;
         private int year;
-        //product list<-----\\\
+        private float price;
+        private List<Product> orderedProducts;
 
 
-        public InvoiceIn(Supplier sender, WarehouseWorker receiver)
+        public InvoiceIn(Supplier sender, WarehouseWorker receiver, string invoiceNumber, int day, int month, int year, float price, List<Product> orderedProducts)
         {
-            this.delieveredBy = sender;
-            this.receivedBy = receiver;
+            DelieveredBy = sender;
+            ReceivedBy = receiver;
+            InvoiceNumber = invoiceNumber;
+            Day = day;
+            Month = month;
+            Year = year;
+            Price = price;
+            OrderedProducts = orderedProducts;
         }
+
+        public IUser DelieveredBy { get { return delieveredBy; } set { delieveredBy = value; } }
+        public IUser ReceivedBy { get { return receivedBy; } set { receivedBy = value; } }
+        public string InvoiceNumber { get { return invoiceNumber; } set { invoiceNumber = value; } }
+        public int Day { get { return day; } set { day = value; } }
+        public int Month { get { return month; } set { month = value; } }
+        public int Year { get { return year; } set { year = value; } }
+        public float Price { get { return price; } set { price = value; } }
+        public List<Product> OrderedProducts { get { return orderedProducts; } set { orderedProducts = value; } }
 
         public string getDate()
         {
