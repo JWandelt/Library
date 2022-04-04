@@ -12,13 +12,15 @@ namespace DataLayer
         private string itemName;
         int quantity;
         float pricePerUnit;
+        Catalog catalog;
 
-        public Product(int itemID, string itemName, int quantity, float pricePerUnit)
+        public Product(int itemID, string itemName, int quantity, float pricePerUnit, Catalog catalog)
         {
             ItemID = itemID;
             ItemName = itemName;
             Quantity = quantity;
             PricePerUnit = pricePerUnit;
+            this.catalog = catalog;
         }
 
         public int ItemID { get { return itemID; } set { itemID = value; } }
