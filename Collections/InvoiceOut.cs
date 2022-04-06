@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    internal class InvoiceOut
+    public class InvoiceOut
     {
         IUser sentBy;
         IUser receivedBy;
