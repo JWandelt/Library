@@ -1,18 +1,16 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DataLayer;
 
 namespace DataLayer
 {
-    namespace Test1
+    namespace UnitTest
     {
         [TestClass]
         public class UnitTest1
         {
             [TestMethod]
-            public void TestCatalogContainer()
+            public void TestMethod1()
             {
-                
             }
         }
     }
