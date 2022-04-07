@@ -26,6 +26,7 @@ namespace DataLayer
         public abstract Product getProduct(int index);
         public abstract void addProduct(Product product);
         public abstract void removeProduct(Product product, int amount);
+        public abstract void addProductQuantity(Product product, int amount);
 
         public abstract void Connect();
 
@@ -163,6 +164,15 @@ namespace DataLayer
             public override void removeWorker(int index)
             {
                 workers.RemoveAt(index);
+            }
+
+            public override void addProductQuantity(Product product, int amount)
+            {
+                foreach (Product p in products)
+                {
+                    if (p == product)
+                        p.Quantity += amount;
+                }
             }
         }
     }

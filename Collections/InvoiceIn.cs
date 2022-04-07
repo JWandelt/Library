@@ -18,7 +18,7 @@ namespace DataLayer
         private List<Product> orderedProducts;
 
 
-        public InvoiceIn(Supplier sender, WarehouseWorker receiver, string invoiceNumber, int day, int month, int year, float price, List<Product> orderedProducts)
+        public InvoiceIn(IUser sender, IUser receiver, float price, string invoiceNumber, int day, int month, int year, List<Product> orderedProducts)
         {
             DelieveredBy = sender;
             ReceivedBy = receiver;
