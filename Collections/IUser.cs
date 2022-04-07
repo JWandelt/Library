@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    internal interface IUser
+    public interface IUser
     {
         string FirstName { get; set; }
         string LastName { get; set; }

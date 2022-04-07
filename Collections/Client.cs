@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    internal class Client : IUser
+    public class Client : IUser
     {
         private string firstName;
         private string lastName;

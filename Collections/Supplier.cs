@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    internal class Supplier : IUser
+    public class Supplier : IUser
     {
         private string firstName;
         private string lastName;
