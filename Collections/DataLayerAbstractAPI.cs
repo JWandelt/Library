@@ -25,7 +25,7 @@ namespace DataLayer
         public abstract void removeInvoiceOut(int index);
         public abstract Product getProduct(int index);
         public abstract void addProduct(Product product);
-        public abstract void removeProduct(int index);
+        public abstract void removeProduct(Product product, int amount);
 
         public abstract void Connect();
 
@@ -146,9 +146,13 @@ namespace DataLayer
                 invoiceOuts.RemoveAt(index);
             }
 
-            public override void removeProduct(int index)
+            public override void removeProduct(Product product, int amount)
             {
-                products.RemoveAt(index);
+                foreach(Product p in products)
+                {
+                    if (p == product)
+                        p.Quantity -= amount;
+                }
             }
 
             public override void removeSupplier(int index)

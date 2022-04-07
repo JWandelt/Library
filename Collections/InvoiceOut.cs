@@ -17,7 +17,7 @@ namespace DataLayer
         private float price;
         private List<Product> sentProducts;
 
-        InvoiceOut(WarehouseWorker worker, Client receiver, float price, string invoiceNumber, int day, int month, int year, List<Product> products)
+        public InvoiceOut(IUser worker, IUser receiver, float price, string invoiceNumber, int day, int month, int year, List<Product> products)
         {
             this.sentBy = worker;
             this.receivedBy = receiver;
