@@ -34,7 +34,7 @@ namespace DataLayer
             return new Linq2SQL(clients, workers, suppliers, invoiceIns, invoiceOuts, products);
         }
 
-        private class CatalogDictionary : Dictionary<string, Catalog>
+        public class CatalogDictionary : Dictionary<string, Catalog>
         {
             private readonly Dictionary<string, Catalog> products = new Dictionary<string, Catalog>();
             private void AddDictionary(string id,Catalog c)
