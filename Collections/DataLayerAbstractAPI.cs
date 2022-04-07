@@ -36,7 +36,15 @@ namespace DataLayer
 
         private class CatalogDictionary : Dictionary<string, Catalog>
         {
-
+            private readonly Dictionary<string, Catalog> products = new Dictionary<string, Catalog>();
+            private void AddDictionary(string id,Catalog c)
+            {
+                products.Add(id, c);
+            }
+            private void RemoveDictionary(string id) 
+            { 
+                products.Remove(id); 
+            }
         }
 
         private class Linq2SQL : DataLayerAbstractAPI
