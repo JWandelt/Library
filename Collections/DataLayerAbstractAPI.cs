@@ -27,12 +27,16 @@ namespace DataLayer
         public abstract void addProduct(Product product);
         public abstract void removeProduct(Product product, int amount);
         public abstract void addProductQuantity(Product product, int amount);
+        public abstract List<Product> Product { get; }
+        public abstract List<IUser> Client { get; }
+        public abstract List<IUser> Worker { get; }
+        public abstract List<IUser> Supplier { get; }
+        public abstract List<InvoiceIn> InvoiceIn { get; }
+        public abstract List<InvoiceOut> InvoiceOut { get; }
 
-        public abstract void Connect();
-
-        public static DataLayerAbstractAPI CreateLinq2SQL(List<IUser> clients, List<IUser> workers, List<IUser> suppliers, List<InvoiceIn> invoiceIns, List<InvoiceOut> invoiceOuts, List<Product> products)
+        public static DataLayerAbstractAPI CreateLinq2SQL()
         {
-            return new Linq2SQL(clients, workers, suppliers, invoiceIns, invoiceOuts, products);
+            return new Linq2SQL();
         }
 
         public class CatalogDictionary : Dictionary<string, Catalog>
@@ -48,23 +52,17 @@ namespace DataLayer
             }
         }
 
-        private class Linq2SQL : DataLayerAbstractAPI
+        public class Linq2SQL : DataLayerAbstractAPI
         {
-            private List<IUser> clients;
-            private List<IUser> workers;
-            private List<IUser> suppliers;
-            private List<InvoiceIn> invoiceIns;
-            private List<InvoiceOut> invoiceOuts;
-            private List<Product> products;
+            private List<IUser> clients = new List<IUser>();
+            private List<IUser> workers = new List<IUser>();
+            private List<IUser> suppliers = new List<IUser>();
+            private List<InvoiceIn> invoiceIns = new List<InvoiceIn>();
+            private List<InvoiceOut> invoiceOuts = new List<InvoiceOut>();
+            private List<Product> products = new List<Product>();
             private CatalogDictionary WarehouseCatalog = new CatalogDictionary();
-            public Linq2SQL(List<IUser> clients, List<IUser> workers, List<IUser> suppliers, List<InvoiceIn> invoiceIns, List<InvoiceOut> invoiceOuts, List<Product> products)
+            public Linq2SQL()
             {
-                this.clients = clients;
-                this.workers = workers;
-                this.suppliers = suppliers;
-                this.invoiceIns = invoiceIns;
-                this.invoiceOuts = invoiceOuts;
-                this.products = products;
             }
 
             public override void addClient(IUser client)
@@ -95,11 +93,6 @@ namespace DataLayer
             public override void addWorker(IUser worker)
             {
                 workers.Add(worker);
-            }
-
-            public override void Connect()
-            {
-                throw new System.NotImplementedException();
             }
 
             public override IUser getClient(int index)
@@ -173,6 +166,36 @@ namespace DataLayer
                     if (p == product)
                         p.Quantity += amount;
                 }
+            }
+
+            public override List<InvoiceIn> InvoiceIn
+            {
+                get { return invoiceIns; }
+            }
+
+            public override List<InvoiceOut> InvoiceOut
+            {
+                get { return invoiceOuts; }
+            }
+
+            public override List<IUser> Client
+            {
+                get { return clients; }
+            }
+
+            public override List<IUser> Worker
+            {
+                get { return workers; }
+            }
+
+            public override List<IUser> Supplier
+            {
+                get { return suppliers; }
+            }
+
+            public override List<Product> Product
+            {
+                get { return products; }
             }
         }
     }

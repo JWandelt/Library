@@ -14,11 +14,10 @@ namespace DataLayer
         private string id;
         private string email;
         private string city;
-        private string state;
         private string country;
         private string street;
 
-        public Client(string firstName, string lastName, int age, string id, string email, string city, string state, string country, string street)
+        public Client(string firstName, string lastName, int age, string id, string email, string city, string country, string street)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -26,7 +25,6 @@ namespace DataLayer
             ID = id;
             Email = email;
             City = city;
-            State = state;
             Country = country;
             Street = street;
         }
@@ -37,7 +35,6 @@ namespace DataLayer
         public string ID { get { return id; } set { id = value; } }
         public string Email { get { return email; } set { email = value; } }
         public string City { get { return city; } set { city = value; } }
-        public string State { get { return state; } set { state = value; } }
         public string Country { get { return country; } set { country = value; } }
         public string Street { get { return street; } set { street = value; } }
 
