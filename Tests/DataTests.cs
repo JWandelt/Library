@@ -9,24 +9,35 @@ namespace Tests
     {
         DataLayerAbstractAPI dl = DataLayerAbstractAPI.CreateLinq2SQL();
         Client client = new Client("Mateusz", "Idec", 42, "c042", "mateusz.idec@interia.pl", "Łódź", "Poland", "Prosta");
-        IUser worker = new WarehouseWorker("Alexander", "Shulgin", 42, "w042", "Testing");
-        IUser supplier = new Supplier("Hunter", "Thompson", 42, "s042", "mateusz.idec@inetria.pl", "Herbs");
+        WarehouseWorker worker = new WarehouseWorker("Alexander", "Shulgin", 42, "w042", "Testing");
+        Supplier supplier = new Supplier("Hunter", "Thompson", 42, "s042", "mateusz.idec@inetria.pl", "Herbs");
         Catalog catalog = new Catalog(1, "Melisa", "Calming herb");
         Catalog catalog2 = new Catalog(2, "Poppy", "Pretty flower");
         List<Product> orderedProducts = new List<Product>();
 
         [TestMethod]
-        public void addingTest()
+        public void addingClient_NotNull()
         {
             dl.addClient(client);
-            dl.addSupplier(supplier);
-            dl.addWorker(worker);
             Assert.IsNotNull(dl.getClient(0));
+        }
+
+        [TestMethod]
+        public void addingSupplier_NotNull()
+        {
+            dl.addSupplier(supplier);
             Assert.IsNotNull(dl.getSupplier(0));
+        }
+
+        [TestMethod]
+        public void addingWorker_NotNull()
+        {
+            dl.addWorker(worker);
             Assert.IsNotNull(dl.getWorker(0));
         }
+
         [TestMethod]
-        public void checkingvaluesTest()
+        public void getterClient_Equal()
         {
             Assert.AreEqual(client.FirstName, "Mateusz");
             Assert.AreEqual(client.LastName, "Idec");
@@ -36,18 +47,26 @@ namespace Tests
             Assert.AreEqual(client.City, "Łódź");
             Assert.AreEqual(client.Country, "Poland");
             Assert.AreEqual(client.Street, "Prosta");
+        }
 
-            Assert.AreEqual(worker.FirstName, "Alexander");
-            Assert.AreEqual(worker.LastName, "Shulgin");
-            Assert.AreEqual(worker.Age, 42);
-            Assert.AreEqual(worker.ID, "w042");
-
+        [TestMethod]
+        public void getterSupplier_Equal()
+        {      
             Assert.AreEqual(supplier.FirstName, "Hunter");
             Assert.AreEqual(supplier.LastName, "Thompson");
             Assert.AreEqual(supplier.Age, 42);
             Assert.AreEqual(supplier.ID, "s042");
-
         }
+
+        [TestMethod]
+        public void getterWorker_Equal()
+        {
+            Assert.AreEqual(worker.FirstName, "Alexander");
+            Assert.AreEqual(worker.LastName, "Shulgin");
+            Assert.AreEqual(worker.Age, 42);
+            Assert.AreEqual(worker.ID, "w042");
+        }
+
         [TestMethod]
         public void removingTest()
         {

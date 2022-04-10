@@ -29,11 +29,11 @@ namespace LogicLayer
             public override void sellProduct(IUser client, IUser worker, List<Product> products, string invoiceNumber, int day, int month, int year)
             {
                 float price = 0;
-                //foreach(Product product in products)
-                //{
-                //    price += product.PricePerUnit * product.Quantity;
-                //    data.removeProduct(product, product.Quantity);
-                //}
+                foreach (Product product in products)
+                {
+                    price += product.PricePerUnit * product.Quantity;
+                    data.removeProduct(product, product.Quantity);
+                }
                 InvoiceOut invoice = new InvoiceOut(worker, client, price, invoiceNumber, day, month, year, products);
                 data.addInvoiceOut(invoice);
             }
