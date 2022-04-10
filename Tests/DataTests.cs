@@ -1,4 +1,4 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DataLayer;
 using System.Collections.Generic;
 
@@ -8,7 +8,7 @@ namespace Tests
     public class DataTests
     {
         DataLayerAbstractAPI dl = DataLayerAbstractAPI.CreateLinq2SQL();
-        IUser client = new Client("Mateusz", "Idec", 42, "c042", "mateusz.idec@interia.pl", "��d�", "Poland", "Tabelowa");
+        Client client = new Client("Mateusz", "Idec", 42, "c042", "mateusz.idec@interia.pl", "Łódź", "Poland", "Prosta");
         IUser worker = new WarehouseWorker("Mateusz", "Idec", 42, "w042", "Testing");
         IUser supplier = new Supplier("Mateusz", "Idec", 42, "s042", "mateusz.idec@inetria.pl", "Herbs");
         Catalog catalog = new Catalog(1, "Melisa", "Calming herb");
@@ -25,7 +25,19 @@ namespace Tests
             Assert.IsNotNull(dl.getSupplier(0));
             Assert.IsNotNull(dl.getWorker(0));
         }
+        [TestMethod]
+        public void checkingvaluesTest()
+        {
+            Assert.AreEqual(client.FirstName, "Mateusz");
+            Assert.AreEqual(client.LastName, "Idec");
+            Assert.AreEqual(client.Age, 42);
+            Assert.AreEqual(client.ID, "c042");
+            Assert.AreEqual(client.Email, "mateusz.idec@interia.pl");
+            Assert.AreEqual(client.City, "Łódź");
+            Assert.AreEqual(client.Country, "Poland");
+            Assert.AreEqual(client.Street, "Prosta");
 
+        }
         [TestMethod]
         public void removingTest()
         {
