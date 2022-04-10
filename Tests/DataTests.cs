@@ -9,8 +9,8 @@ namespace Tests
     {
         DataLayerAbstractAPI dl = DataLayerAbstractAPI.CreateLinq2SQL();
         Client client = new Client("Mateusz", "Idec", 42, "c042", "mateusz.idec@interia.pl", "Łódź", "Poland", "Prosta");
-        IUser worker = new WarehouseWorker("Mateusz", "Idec", 42, "w042", "Testing");
-        IUser supplier = new Supplier("Mateusz", "Idec", 42, "s042", "mateusz.idec@inetria.pl", "Herbs");
+        IUser worker = new WarehouseWorker("Alexander", "Shulgin", 42, "w042", "Testing");
+        IUser supplier = new Supplier("Hunter", "Thompson", 42, "s042", "mateusz.idec@inetria.pl", "Herbs");
         Catalog catalog = new Catalog(1, "Melisa", "Calming herb");
         Catalog catalog2 = new Catalog(2, "Poppy", "Pretty flower");
         List<Product> orderedProducts = new List<Product>();
@@ -36,6 +36,16 @@ namespace Tests
             Assert.AreEqual(client.City, "Łódź");
             Assert.AreEqual(client.Country, "Poland");
             Assert.AreEqual(client.Street, "Prosta");
+
+            Assert.AreEqual(worker.FirstName, "Alexander");
+            Assert.AreEqual(worker.LastName, "Shulgin");
+            Assert.AreEqual(worker.Age, 42);
+            Assert.AreEqual(worker.ID, "w042");
+
+            Assert.AreEqual(supplier.FirstName, "Hunter");
+            Assert.AreEqual(supplier.LastName, "Thompson");
+            Assert.AreEqual(supplier.Age, 42);
+            Assert.AreEqual(supplier.ID, "s042");
 
         }
         [TestMethod]
