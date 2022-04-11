@@ -12,30 +12,23 @@ namespace Tests
     [TestClass]
     public class LogicTest
     {
-        private static List<IUser> clients = new List<IUser> ();
-        private static List<IUser> workers;
-        private static List<IUser> suppliers;
-        private static List<InvoiceIn> invoiceIns;
-        private static List<InvoiceOut> invoiceOuts;
-        private static List<Product> products = new List<Product>();
-        LogicLayerAbstractAPI ll = LogicLayerAbstractAPI.CreateLayer();
-        IUser client = new Client("Jakub", "Wandelt", 20, "15d", "123", "lodz", "poland", "budowlana");
-        IUser worker = new WarehouseWorker("Dzakub", "Kandel", 25, "2d", "jomama");
-        
+      
+        private static DataGenerator dataGenerator = new DataGenerator();
+        LogicLayerAbstractAPI data = dataGenerator.GenerateForLogicAPI();
         
         [TestMethod]
-        public void addingClient_AreEqual()
+        public void Invoices_AreEqual()
         {
-          
-            List<Product>products = new List<Product>();
-            ll.sellProduct(client, worker, products, "123", 0, 0, 0);
-            ll.sellProduct(client, worker, products, "2331", 0, 0, 0);
+            Assert.AreEqual(data.getData().getClient(0),data.getData().getInvoiceOut(0).ReceivedBy);
+            Assert.AreEqual(data.getData().getWorker(0),data.getData().getInvoiceIn(0).ReceivedBy);
+            Assert.AreEqual("IN/00052/2002",data.getData().getInvoiceIn(0).InvoiceNumber);
+            Assert.AreEqual("OUT/10052/2002",data.getData().getInvoiceOut(0).InvoiceNumber);
+            Assert.AreEqual(1000,data.getData().getInvoiceIn(0).Price);
+            Assert.AreEqual(750,data.getData().getInvoiceOut(0).Price);
 
-            //Assert.AreEqual(ll.getData().getInvoiceOut(0).ReceivedBy, client);
-           //Assert.AreEqual(ll.getData().getInvoiceOut(0).InvoiceNumber, "123");
-            //Assert.AreEqual(ll.getData().getInvoiceOut(1).InvoiceNumber, "2331");
-            //Assert.AreEqual(1, clients.Count);
-
+            Assert.AreEqual("31-12-2022",data.getData().getInvoiceIn(0).getDate());
+            Assert.AreEqual("30-12-2022",data.getData().getInvoiceOut(0).getDate());
+            
         }
     }
 }

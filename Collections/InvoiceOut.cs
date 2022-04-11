@@ -41,7 +41,7 @@ namespace DataLayer
 
         public string getDate()
         {
-            return String.Join(day.ToString(), "-", month.ToString(), "-", year.ToString());
+            return String.Join("-", day.ToString(), month.ToString(), year.ToString());
         }
 
     }
