@@ -16,9 +16,9 @@ namespace Tests
 
             List<Product> orderedProducts = new List<Product>();
 
-            IUser c1 = new Client("Jakub", "Wandelt", 20, "c01", "jakub.wandelt@gmail.com", "Łódź", "Poland", "Tabelowa");
-            IUser c2 = new Client("Mateusz", "Idec", 42, "c02", "mateusz.idec@gmail.com", "Łódź", "Poland", "Tabelowa");
-            IUser c3 = new Client("John", "Smith", 33, "c03", "john.smith@gmail.com", "Łódź", "Poland", "Tabelowa");
+            IUser c1 = new Client("Jakub", "Wandelt", 20, "c01", "jakub.wandelt@gmail.com", "Łódź", "Poland", "Smutna");
+            IUser c2 = new Client("Mateusz", "Idec", 42, "c02", "mateusz.idec@gmail.com", "Łódź", "Poland", "Smutna");
+            IUser c3 = new Client("John", "Smith", 33, "c03", "john.smith@gmail.com", "Łódź", "Poland", "Smutna");
 
             IUser s1 = new Supplier("Wakub", "Jandelt", 20, "s01", "wakub.jandelt@gmail.com", "Herbs");
             IUser s2 = new Supplier("Iateusz", "Mdec", 42, "s042", "iateusz.mdec@gmail.com", "Poppy");

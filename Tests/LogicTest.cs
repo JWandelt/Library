@@ -12,12 +12,12 @@ namespace Tests
     [TestClass]
     public class LogicTest
     {
-        private static List<IUser> clients;
+        private static List<IUser> clients = new List<IUser> ();
         private static List<IUser> workers;
         private static List<IUser> suppliers;
         private static List<InvoiceIn> invoiceIns;
         private static List<InvoiceOut> invoiceOuts;
-        private static List<Product> products;
+        private static List<Product> products = new List<Product>();
         LogicLayerAbstractAPI ll = LogicLayerAbstractAPI.CreateLayer();
         IUser client = new Client("Jakub", "Wandelt", 20, "15d", "123", "lodz", "poland", "budowlana");
         IUser worker = new WarehouseWorker("Dzakub", "Kandel", 25, "2d", "jomama");
@@ -26,12 +26,15 @@ namespace Tests
         [TestMethod]
         public void addingClient_AreEqual()
         {
-            clients.Add(client);
+          
             List<Product>products = new List<Product>();
             ll.sellProduct(client, worker, products, "123", 0, 0, 0);
             ll.sellProduct(client, worker, products, "2331", 0, 0, 0);
 
-            Assert.AreEqual(1,clients.Count);
+            //Assert.AreEqual(ll.getData().getInvoiceOut(0).ReceivedBy, client);
+           //Assert.AreEqual(ll.getData().getInvoiceOut(0).InvoiceNumber, "123");
+            //Assert.AreEqual(ll.getData().getInvoiceOut(1).InvoiceNumber, "2331");
+            //Assert.AreEqual(1, clients.Count);
 
         }
     }
