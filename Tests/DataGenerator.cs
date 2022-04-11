@@ -63,5 +63,11 @@ namespace Tests
 
             return data;
         }
+
+        public LogicLayerAbstractAPI GenerateForLogicAPI()
+        {
+            LogicLayerAbstractAPI.Logic logic = new LogicLayerAbstractAPI.Logic(GenerateForDataAPI());
+            return logic;
+        }
     }
 }
