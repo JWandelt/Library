@@ -7,92 +7,170 @@ namespace Tests
     [TestClass]
     public class DataTests
     {
-        DataLayerAbstractAPI dl = DataLayerAbstractAPI.CreateLinq2SQL();
-        Client client = new Client("Mateusz", "Idec", 42, "c042", "mateusz.idec@interia.pl", "Łódź", "Poland", "Prosta");
-        WarehouseWorker worker = new WarehouseWorker("Alexander", "Shulgin", 42, "w042", "Testing");
-        Supplier supplier = new Supplier("Hunter", "Thompson", 42, "s042", "mateusz.idec@inetria.pl", "Herbs");
-        Catalog catalog = new Catalog(1, "Melisa", "Calming herb");
-        Catalog catalog2 = new Catalog(2, "Poppy", "Pretty flower");
-        List<Product> orderedProducts = new List<Product>();
+        private DataLayerAbstractAPI dataLayer = DataLayerAbstractAPI.CreateLinq2SQL();
+        private DataGenerator generator = new DataGenerator();
 
         [TestMethod]
-        public void addingClient_NotNull()
+        public void clientRepositoryState()
         {
-            dl.addClient(client);
-            Assert.IsNotNull(dl.getClient(0));
+            dataLayer = generator.GenerateForDataAPI();
+            Assert.IsNotNull(dataLayer.getClient(0));
+            Assert.IsNotNull(dataLayer.getClient(1));
+            Assert.IsNotNull(dataLayer.getClient(2));
         }
 
         [TestMethod]
-        public void addingSupplier_NotNull()
+        public void supplierRepositoryState()
         {
-            dl.addSupplier(supplier);
-            Assert.IsNotNull(dl.getSupplier(0));
+            dataLayer = generator.GenerateForDataAPI();
+            Assert.IsNotNull(dataLayer.getSupplier(0));
+            Assert.IsNotNull(dataLayer.getSupplier(1));
+            Assert.IsNotNull(dataLayer.getSupplier(2));
         }
 
         [TestMethod]
-        public void addingWorker_NotNull()
+        public void workerRepositoryState()
         {
-            dl.addWorker(worker);
-            Assert.IsNotNull(dl.getWorker(0));
+            dataLayer = generator.GenerateForDataAPI();
+            Assert.IsNotNull(dataLayer.getWorker(0));
+            Assert.IsNotNull(dataLayer.getWorker(1));
+            Assert.IsNotNull(dataLayer.getWorker(2));
         }
 
         [TestMethod]
-        public void getterClient_Equal()
+        public void productRepositoryState()
         {
-            Assert.AreEqual(client.FirstName, "Mateusz");
-            Assert.AreEqual(client.LastName, "Idec");
-            Assert.AreEqual(client.Age, 42);
-            Assert.AreEqual(client.ID, "c042");
-            Assert.AreEqual(client.Email, "mateusz.idec@interia.pl");
-            Assert.AreEqual(client.City, "Łódź");
-            Assert.AreEqual(client.Country, "Poland");
-            Assert.AreEqual(client.Street, "Prosta");
+            dataLayer = generator.GenerateForDataAPI();
+            Assert.IsNotNull(dataLayer.getProduct(0));
+            Assert.IsNotNull(dataLayer.getProduct(1));
+            Assert.IsNotNull(dataLayer.getProduct(2));
         }
 
         [TestMethod]
-        public void getterSupplier_Equal()
-        {      
-            Assert.AreEqual(supplier.FirstName, "Hunter");
-            Assert.AreEqual(supplier.LastName, "Thompson");
-            Assert.AreEqual(supplier.Age, 42);
-            Assert.AreEqual(supplier.ID, "s042");
-        }
-
-        [TestMethod]
-        public void getterWorker_Equal()
+        public void invoiceInRepositoryState()
         {
-            Assert.AreEqual(worker.FirstName, "Alexander");
-            Assert.AreEqual(worker.LastName, "Shulgin");
-            Assert.AreEqual(worker.Age, 42);
-            Assert.AreEqual(worker.ID, "w042");
+            dataLayer = generator.GenerateForDataAPI();
+            Assert.IsNotNull(dataLayer.getInvoiceIn(0));
         }
 
         [TestMethod]
-        public void removingTest()
+        public void invoiceOutRepositoryState()
         {
-            Product product = new Product(1, 21, 150.0f, catalog);
-            Product product2 = new Product(2, 21, 250.0f, catalog2);
-            orderedProducts.Add(product);
-            orderedProducts.Add(product2);
-            InvoiceIn invoiceIn = new InvoiceIn(supplier, worker, 1000.0f, "IN/00052/2002", 31, 12, 2022, orderedProducts);
-            InvoiceOut invoiceOut = new InvoiceOut(worker, client, 750.0f, "OUT/10052/2002", 30, 12, 2022, orderedProducts);
-            dl.addClient(client);
-            dl.addSupplier(supplier);
-            dl.addWorker(worker);
-            dl.addInvoiceIn(invoiceIn); 
-            dl.addInvoiceOut(invoiceOut);
-            Assert.IsNotNull(dl.getInvoiceOut(0));
-            Assert.IsNotNull(dl.getInvoiceIn(0));
-            dl.removeWorker(0);
-            dl.removeSupplier(0);
-            dl.removeClient(0);
-            dl.removeInvoiceIn(0);
-            dl.removeInvoiceOut(0);
-            Assert.AreEqual(0, dl.Worker.Count);
-            Assert.AreEqual(0, dl.Client.Count);
-            Assert.AreEqual(0, dl.Supplier.Count);
-            Assert.AreEqual(0, dl.InvoiceOut.Count);
-            Assert.AreEqual(0, dl.InvoiceIn.Count);
+            dataLayer = generator.GenerateForDataAPI();
+            Assert.IsNotNull(dataLayer.getInvoiceOut(0));
         }
+
+        [TestMethod]
+        public void removingClient()
+        {
+            dataLayer = generator.GenerateForDataAPI();
+            dataLayer.removeClient(0);
+            Assert.AreEqual(2, dataLayer.Client.Count);
+        }
+
+        [TestMethod]
+        public void removingSupplier()
+        {
+            dataLayer = generator.GenerateForDataAPI();
+            dataLayer.removeSupplier(0);
+            Assert.AreEqual(2, dataLayer.Supplier.Count);
+        }
+
+        [TestMethod]
+        public void removingWorker()
+        {
+            dataLayer = generator.GenerateForDataAPI();
+            dataLayer.removeWorker(0);
+            Assert.AreEqual(2, dataLayer.Worker.Count);
+        }
+
+        [TestMethod]
+        public void removingInvoiceIn()
+        {
+            dataLayer = generator.GenerateForDataAPI();
+            dataLayer.removeInvoiceIn(0);
+            Assert.AreEqual(0, dataLayer.InvoiceIn.Count);
+        }
+
+        [TestMethod]
+        public void removingInvoiceOut()
+        {
+            dataLayer = generator.GenerateForDataAPI();
+            dataLayer.removeInvoiceOut(0);
+            Assert.AreEqual(0, dataLayer.InvoiceOut.Count);
+        }
+
+        [TestMethod]
+        public void checkProductValues()
+        {
+            dataLayer = generator.GenerateForDataAPI();
+            dataLayer.removeInvoiceOut(0);
+            Assert.AreEqual(1, dataLayer.getProduct(0).ItemID);
+            Assert.AreEqual(21, dataLayer.getProduct(0).Quantity);
+            Assert.AreEqual(150.0f, dataLayer.getProduct(0).PricePerUnit);
+        }
+
+        [TestMethod]
+        public void checkInvoiceInValues()
+        {
+            dataLayer = generator.GenerateForDataAPI();
+            Assert.AreEqual(dataLayer.getSupplier(0), dataLayer.getInvoiceIn(0).DelieveredBy);       //InvoiceIn invoiceIn = new InvoiceIn(s1, w1, 1000.0f, "IN/00052/2002", 31, 12, 2022, orderedProducts);
+            Assert.AreEqual(dataLayer.getWorker(0), dataLayer.getInvoiceIn(0).ReceivedBy);       //InvoiceOut invoiceOut = new InvoiceOut(w1, c1, 750.0f, "OUT/10052/2002", 30, 12, 2022, orderedProducts);
+            Assert.AreEqual(1000.0f, dataLayer.getInvoiceIn(0).Price);
+            Assert.AreEqual("IN/00052/2002", dataLayer.getInvoiceIn(0).InvoiceNumber);
+            Assert.AreEqual(31, dataLayer.getInvoiceIn(0).Day);
+            Assert.AreEqual(12, dataLayer.getInvoiceIn(0).Month);
+            Assert.AreEqual(2022, dataLayer.getInvoiceIn(0).Year);
+        }
+
+        [TestMethod]
+        public void checkInvoiceOutValues()
+        {
+            dataLayer = generator.GenerateForDataAPI();
+            Assert.AreEqual(dataLayer.getWorker(0), dataLayer.getInvoiceOut(0).SentBy);       //InvoiceIn invoiceIn = new InvoiceIn(s1, w1, 1000.0f, "IN/00052/2002", 31, 12, 2022, orderedProducts);
+            Assert.AreEqual(dataLayer.getClient(0), dataLayer.getInvoiceOut(0).ReceivedBy);       //InvoiceOut invoiceOut = new InvoiceOut(w1, c1, 750.0f, "OUT/10052/2002", 30, 12, 2022, orderedProducts);
+            Assert.AreEqual(750.0f, dataLayer.getInvoiceOut(0).Price);
+            Assert.AreEqual("OUT/10052/2002", dataLayer.getInvoiceOut(0).InvoiceNumber);
+            Assert.AreEqual(30, dataLayer.getInvoiceOut(0).Day);
+            Assert.AreEqual(12, dataLayer.getInvoiceOut(0).Month);
+            Assert.AreEqual(2022, dataLayer.getInvoiceOut(0).Year);
+        }
+
+        //[TestMethod]
+        //public void getterWorker_Equal()
+        //{
+        //    Assert.AreEqual(worker.FirstName, "Alexander");
+        //    Assert.AreEqual(worker.LastName, "Shulgin");
+        //    Assert.AreEqual(worker.Age, 42);
+        //    Assert.AreEqual(worker.ID, "w042");
+        //}
+
+        //[TestMethod]
+        //public void removingTest()
+        //{
+        //    Product product = new Product(1, 21, 150.0f, catalog);
+        //    Product product2 = new Product(2, 21, 250.0f, catalog2);
+        //    orderedProducts.Add(product);
+        //    orderedProducts.Add(product2);
+        //    InvoiceIn invoiceIn = new InvoiceIn(supplier, worker, 1000.0f, "IN/00052/2002", 31, 12, 2022, orderedProducts);
+        //    InvoiceOut invoiceOut = new InvoiceOut(worker, client, 750.0f, "OUT/10052/2002", 30, 12, 2022, orderedProducts);
+        //    dl.addClient(client);
+        //    dl.addSupplier(supplier);
+        //    dl.addWorker(worker);
+        //    dl.addInvoiceIn(invoiceIn); 
+        //    dl.addInvoiceOut(invoiceOut);
+        //    Assert.IsNotNull(dl.getInvoiceOut(0));
+        //    Assert.IsNotNull(dl.getInvoiceIn(0));
+        //    dl.removeWorker(0);
+        //    dl.removeSupplier(0);
+        //    dl.removeClient(0);
+        //    dl.removeInvoiceIn(0);
+        //    dl.removeInvoiceOut(0);
+        //    Assert.AreEqual(0, dl.Worker.Count);
+        //    Assert.AreEqual(0, dl.Client.Count);
+        //    Assert.AreEqual(0, dl.Supplier.Count);
+        //    Assert.AreEqual(0, dl.InvoiceOut.Count);
+        //    Assert.AreEqual(0, dl.InvoiceIn.Count);
+        //}
     }
 }
