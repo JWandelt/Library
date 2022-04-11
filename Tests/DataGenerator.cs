@@ -28,7 +28,7 @@ namespace Tests
             IUser w2 = new WarehouseWorker("Ateusz", "Dec", 42, "w042", "Testing");
             IUser w3 = new WarehouseWorker("Ohn", "Mith", 33, "w03", "Customer Support");
 
-            Catalog ca1 = new Catalog(1, "Melisa", "Calming herb");
+            Catalog ca1 = new Catalog(1, "Lemon balm", "Calming herb");
             Catalog ca2 = new Catalog(2, "Poppy", "Pretty flower");
             Catalog ca3 = new Catalog(3, "Jajowar", "Useful");
 
