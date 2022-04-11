@@ -12,25 +12,27 @@ namespace Tests
     [TestClass]
     public class LogicTest
     {
-        //private static List<IUser> clients;
-        //private static List<IUser> workers;
-        //private static List<IUser> suppliers;
-        //private static List<InvoiceIn> invoiceIns;
-        //private static List<InvoiceOut> invoiceOuts;
-        //private static List<Product> products;
+        private static List<IUser> clients;
+        private static List<IUser> workers;
+        private static List<IUser> suppliers;
+        private static List<InvoiceIn> invoiceIns;
+        private static List<InvoiceOut> invoiceOuts;
+        private static List<Product> products;
         LogicLayerAbstractAPI ll = LogicLayerAbstractAPI.CreateLayer();
-
+        IUser client = new Client("Jakub", "Wandelt", 20, "15d", "123", "lodz", "poland", "budowlana");
+        IUser worker = new WarehouseWorker("Dzakub", "Kandel", 25, "2d", "jomama");
+        
+        
         [TestMethod]
-        public void TestMethod1()
+        public void addingClient_AreEqual()
         {
-            //IUser client = new Client("Jakub", "Wandelt", 20, "15d", "123", "lodz", "poland", "budowlana");
-            //IUser worker = new WarehouseWorker("Dzakub", "Kandel", 25, "2d", "jomama");
-            //List<Product>? products = new List<Product>();
-            ////products.Add(product);
-            //////clients.Add(client);
-            ////ll.sellProduct(client, worker, products, "123", 0, 0, 0);
-            //ll.sellProduct(client, worker, products, "2331", 0, 0, 0);
-            
+            clients.Add(client);
+            List<Product>products = new List<Product>();
+            ll.sellProduct(client, worker, products, "123", 0, 0, 0);
+            ll.sellProduct(client, worker, products, "2331", 0, 0, 0);
+
+            Assert.AreEqual(1,clients.Count);
+
         }
     }
 }
