@@ -49,6 +49,11 @@ namespace LogicLayer
                 InvoiceIn invoice = new InvoiceIn(supplier, worker, price, invoiceNumber, day, month, year, products);
                 data.addInvoiceIn(invoice);
             }
+            public DataLayerAbstractAPI getData()
+            {
+                return data;
+            }
+
         }
     }
 }
