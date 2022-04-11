@@ -22,6 +22,7 @@ namespace DataLayer
             this.sentBy = worker;
             this.receivedBy = receiver;
             Price = price;
+            InvoiceNumber = invoiceNumber;
             Day = day;
             Month = month;
             Year = year;
