@@ -16,11 +16,11 @@ namespace LogicLayer
 
         public abstract void sellProduct(IUser client, IUser worker, List<Product> products, string invoiceNumber, int day, int month, int year);
         public abstract void buyProduct(IUser supplier, IUser worker, List<Product> products, string invoiceNumber, int day, int month, int year);
-
+        private DataLayerAbstractAPI data = DataLayerAbstractAPI.CreateLinq2SQL ();
 
         public class Logic : LogicLayerAbstractAPI
         {
-            private DataLayerAbstractAPI data;
+          
             public Logic(DataLayerAbstractAPI dataLayer)
             {
                 data = dataLayer;
@@ -49,11 +49,10 @@ namespace LogicLayer
                 InvoiceIn invoice = new InvoiceIn(supplier, worker, price, invoiceNumber, day, month, year, products);
                 data.addInvoiceIn(invoice);
             }
-            public DataLayerAbstractAPI getData()
-            {
-                return data;
-            }
-
+        }
+        public DataLayerAbstractAPI getData()
+        {
+            return data;
         }
     }
 }

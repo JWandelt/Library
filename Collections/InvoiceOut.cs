@@ -27,6 +27,7 @@ namespace DataLayer
             Month = month;
             Year = year;
             SentProducts = products;
+
         }
 
         public IUser SentBy { get { return sentBy; } set { sentBy = value; } }
