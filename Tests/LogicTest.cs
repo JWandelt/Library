@@ -16,19 +16,37 @@ namespace Tests
         LogicLayerAbstractAPI data = dataGenerator.GenerateForLogicAPI();
         
         [TestMethod]
-        public void Invoices_AreEqual()
+        public void sellProduct()
         {
-            Assert.AreEqual(data.getData().getClient(0),data.getData().getInvoiceOut(0).ReceivedBy);
-            Assert.AreEqual(data.getData().getWorker(0),data.getData().getInvoiceIn(0).ReceivedBy);
-            Assert.AreEqual(data.getData().getWorker(0),data.getData().getInvoiceOut(0).SentBy);
-            Assert.AreEqual(data.getData().getSupplier(0),data.getData().getInvoiceIn(0).DelieveredBy);
-            Assert.AreEqual("IN/00052/2002",data.getData().getInvoiceIn(0).InvoiceNumber);
-            Assert.AreEqual("OUT/10052/2002",data.getData().getInvoiceOut(0).InvoiceNumber);
-            Assert.AreEqual(1000,data.getData().getInvoiceIn(0).Price);
-            Assert.AreEqual(750,data.getData().getInvoiceOut(0).Price);
+            Catalog ca1 = new Catalog(1, "Lemon balm", "Calming herb");
+            int initialQuantity = data.getData().getProduct(0).Quantity;
+            Product p = new Product(1, 1, 10.0f, ca1);
+            List<Product> productList = new List<Product>();
+            productList.Add(p);
+            data.sellProduct(data.getData().getClient(0), data.getData().getWorker(0), productList, "OUT/00041/2022", 30, 02, 2022);
+            Assert.AreEqual(data.getData().InvoiceOut.Count, 2);
+            Assert.AreEqual(data.getData().getProduct(0).Quantity, initialQuantity - 1);
+            Assert.AreEqual(data.getData().getClient(0),data.getData().getInvoiceOut(1).ReceivedBy);
+            Assert.AreEqual(data.getData().getWorker(0),data.getData().getInvoiceOut(1).SentBy);
+            Assert.AreEqual("OUT/00041/2022", data.getData().getInvoiceOut(1).InvoiceNumber);
+            Assert.AreEqual(10.0f,data.getData().getInvoiceOut(1).Price);
+            Assert.AreEqual("30-2-2022",data.getData().getInvoiceOut(1).getDate());
+        }
 
-            Assert.AreEqual("31-12-2022",data.getData().getInvoiceIn(0).getDate());
-            Assert.AreEqual("30-12-2022",data.getData().getInvoiceOut(0).getDate());
+        [TestMethod]
+        public void buyProduct()
+        {
+            Catalog ca1 = new Catalog(1, "Lemon balm", "Calming herb");
+            int initialQuantity = data.getData().getProduct(0).Quantity;
+            Product p = new Product(1, 1, 10.0f, ca1);
+            List<Product> productList = new List<Product>();
+            productList.Add(p);
+            data.buyProduct(data.getData().getSupplier(0), data.getData().getWorker(0), productList, "IN/00021/2022", 29, 02, 2022);
+            Assert.AreEqual(data.getData().getWorker(0), data.getData().getInvoiceIn(1).ReceivedBy);
+            Assert.AreEqual(data.getData().getSupplier(0), data.getData().getInvoiceIn(1).DelieveredBy);
+            Assert.AreEqual("IN/00021/2022", data.getData().getInvoiceIn(1).InvoiceNumber);
+            Assert.AreEqual(10.0f, data.getData().getInvoiceIn(1).Price);
+            Assert.AreEqual("29-2-2022", data.getData().getInvoiceIn(1).getDate());
         }
     }
 }

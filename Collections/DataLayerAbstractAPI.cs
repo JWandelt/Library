@@ -144,7 +144,7 @@ namespace DataLayer
             {
                 foreach(Product p in products)
                 {
-                    if (p == product)
+                    if (p.ItemID == product.ItemID)
                         p.Quantity -= amount;
                 }
             }
