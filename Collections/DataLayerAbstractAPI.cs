@@ -63,7 +63,10 @@ namespace DataLayer
             private CatalogDictionary WarehouseCatalog = new CatalogDictionary();
             public Linq2SQL(IDataGenerator data)
             {
-                throw new NotImplementedException();
+                data.initializeData();
+                clients = data.Clients;
+                workers = data.Workers;
+                suppliers = data.Suppliers;
             }
 
             public override void addClient(IUser client)
