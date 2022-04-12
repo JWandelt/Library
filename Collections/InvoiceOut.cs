@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    public class InvoiceOut
+    public class InvoiceOut : IEvent
     {
         IUser sentBy;
         IUser receivedBy;
@@ -19,25 +19,25 @@ namespace DataLayer
 
         public InvoiceOut(IUser worker, IUser receiver, float price, string invoiceNumber, int day, int month, int year, List<Product> products)
         {
-            this.sentBy = worker;
-            this.receivedBy = receiver;
+            sentBy = worker;
+            receivedBy = receiver;
             Price = price;
             InvoiceNumber = invoiceNumber;
             Day = day;
             Month = month;
             Year = year;
-            SentProducts = products;
+            Products = products;
 
         }
 
-        public IUser SentBy { get { return sentBy; } set { sentBy = value; } }
-        public IUser ReceivedBy { get { return receivedBy; } set { receivedBy = value; } }
+        public IUser Sender { get { return sentBy; } set { sentBy = value; } }
+        public IUser Receiver { get { return receivedBy; } set { receivedBy = value; } }
         public string InvoiceNumber { get { return invoiceNumber; } set { invoiceNumber = value; } }
         public int Day { get { return day; } set { day = value; } }
         public int Month { get { return month; } set { month = value; } }
         public int Year { get { return year; } set { year = value; } }
         public float Price { get { return price; } set { price = value; } }
-        public List<Product> SentProducts { get { return sentProducts; } set { sentProducts = value;} }
+        public List<Product> Products { get { return sentProducts; } set { sentProducts = value;} }
 
         public string getDate()
         {

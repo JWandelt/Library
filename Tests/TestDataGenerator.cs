@@ -8,15 +8,11 @@ using LogicLayer;
 
 namespace Tests
 {
-    public class DataGenerator
+    public class TestDataGenerator : IDataGenerator
     {
-        public DataLayerAbstractAPI GenerateForDataAPI()
-        {
-            DataLayerAbstractAPI data = DataLayerAbstractAPI.CreateLinq2SQL();
-
             List<Product> orderedProducts = new List<Product>();
 
-            IUser c1 = new Client("Jakub", "Wandelt", 20, "c01", "jakub.wandelt@gmail.com", "Łódź", "Poland", "Smutna");
+            internal IUser c1 = new Client("Jakub", "Wandelt", 20, "c01", "jakub.wandelt@gmail.com", "Łódź", "Poland", "Smutna");
             IUser c2 = new Client("Mateusz", "Idec", 42, "c02", "mateusz.idec@gmail.com", "Łódź", "Poland", "Smutna");
             IUser c3 = new Client("John", "Smith", 33, "c03", "john.smith@gmail.com", "Łódź", "Poland", "Smutna");
 
@@ -41,33 +37,4 @@ namespace Tests
 
             InvoiceIn invoiceIn = new InvoiceIn(s1, w1, 1000.0f, "IN/00052/2002", 31, 12, 2022, orderedProducts);
             InvoiceOut invoiceOut = new InvoiceOut(w1, c1, 750.0f, "OUT/10052/2002", 30, 12, 2022, orderedProducts);
-
-            data.addClient(c1);
-            data.addClient(c2);
-            data.addClient(c3);
-
-            data.addSupplier(s1);
-            data.addSupplier(s2);
-            data.addSupplier(s3);
-
-            data.addWorker(w1);
-            data.addWorker(w2);
-            data.addWorker(w3);
-
-            data.addProduct(p1);
-            data.addProduct(p2);
-            data.addProduct(p3);
-
-            data.addInvoiceIn(invoiceIn);
-            data.addInvoiceOut(invoiceOut);
-
-            return data;
-        }
-
-        public LogicLayerAbstractAPI GenerateForLogicAPI()
-        {
-            LogicLayerAbstractAPI.Logic logic = new LogicLayerAbstractAPI.Logic(GenerateForDataAPI());
-            return logic;
-        }
-    }
 }
