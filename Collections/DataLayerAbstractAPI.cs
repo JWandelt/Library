@@ -17,26 +17,26 @@ namespace DataLayer
         public abstract IUser getSupplier(int index);
         public abstract void addSupplier(IUser supplier);
         public abstract void removeSupplier(int index);
-        public abstract InvoiceIn getInvoiceIn(int index);
-        public abstract void addInvoiceIn(InvoiceIn invoice);
+        public abstract IEvent getInvoiceIn(int index);
+        public abstract void addInvoiceIn(IEvent invoice);
         public abstract void removeInvoiceIn(int index);
-        public abstract InvoiceOut getInvoiceOut(int index);
-        public abstract void addInvoiceOut(InvoiceOut invoice);
+        public abstract IEvent getInvoiceOut(int index);
+        public abstract void addInvoiceOut(IEvent invoice);
         public abstract void removeInvoiceOut(int index);
-        public abstract Product getProduct(int index);
-        public abstract void addProduct(Product product);
-        public abstract void removeProduct(Product product, int amount);
-        public abstract void addProductQuantity(Product product, int amount);
-        public abstract List<Product> Product { get; }
+        public abstract IState getProduct(int index);
+        public abstract void addProduct(IState product);
+        public abstract void removeProduct(IState product, int amount);
+        public abstract void addProductQuantity(IState product, int amount);
+        public abstract List<IState> Product { get; }
         public abstract List<IUser> Client { get; }
         public abstract List<IUser> Worker { get; }
         public abstract List<IUser> Supplier { get; }
-        public abstract List<InvoiceIn> InvoiceIn { get; }
-        public abstract List<InvoiceOut> InvoiceOut { get; }
+        public abstract List<IEvent> InvoiceIn { get; }
+        public abstract List<IEvent> InvoiceOut { get; }
 
-        public static DataLayerAbstractAPI CreateLinq2SQL()
+        public static DataLayerAbstractAPI CreateLinq2SQL(IDataGenerator data)
         {
-            return new Linq2SQL();
+            return new Linq2SQL(data);
         }
 
         public class CatalogDictionary : Dictionary<string, Catalog>
@@ -57,12 +57,13 @@ namespace DataLayer
             private List<IUser> clients = new List<IUser>();
             private List<IUser> workers = new List<IUser>();
             private List<IUser> suppliers = new List<IUser>();
-            private List<InvoiceIn> invoiceIns = new List<InvoiceIn>();
-            private List<InvoiceOut> invoiceOuts = new List<InvoiceOut>();
-            private List<Product> products = new List<Product>();
+            private List<IEvent> invoiceIns = new List<IEvent>();
+            private List<IEvent> invoiceOuts = new List<IEvent>();
+            private List<IState> products = new List<IState>();
             private CatalogDictionary WarehouseCatalog = new CatalogDictionary();
-            public Linq2SQL()
+            public Linq2SQL(IDataGenerator data)
             {
+                throw new NotImplementedException();
             }
 
             public override void addClient(IUser client)
@@ -70,17 +71,17 @@ namespace DataLayer
                 clients.Add(client);
             }
 
-            public override void addInvoiceIn(InvoiceIn invoice)
+            public override void addInvoiceIn(IEvent invoice)
             {
                 invoiceIns.Add(invoice);
             }
 
-            public override void addInvoiceOut(InvoiceOut invoice)
+            public override void addInvoiceOut(IEvent invoice)
             {
                 invoiceOuts.Add(invoice);
             }
 
-            public override void addProduct(Product product)
+            public override void addProduct(IState product)
             {
                 products.Add(product);
             }
@@ -100,17 +101,17 @@ namespace DataLayer
                 return clients[index];
             }
 
-            public override InvoiceIn getInvoiceIn(int index)
+            public override IEvent getInvoiceIn(int index)
             {
                 return invoiceIns[index];
             }
 
-            public override InvoiceOut getInvoiceOut(int index)
+            public override IEvent getInvoiceOut(int index)
             {
                 return invoiceOuts[index];
             }
 
-            public override Product getProduct(int index)
+            public override IState getProduct(int index)
             {
                 return products[index];
             }
@@ -140,7 +141,7 @@ namespace DataLayer
                 invoiceOuts.RemoveAt(index);
             }
 
-            public override void removeProduct(Product product, int amount)
+            public override void removeProduct(IState product, int amount)
             {
                 foreach(Product p in products)
                 {
@@ -159,7 +160,7 @@ namespace DataLayer
                 workers.RemoveAt(index);
             }
 
-            public override void addProductQuantity(Product product, int amount)
+            public override void addProductQuantity(IState product, int amount)
             {
                 foreach (Product p in products)
                 {
@@ -168,12 +169,12 @@ namespace DataLayer
                 }
             }
 
-            public override List<InvoiceIn> InvoiceIn
+            public override List<IEvent> InvoiceIn
             {
                 get { return invoiceIns; }
             }
 
-            public override List<InvoiceOut> InvoiceOut
+            public override List<IEvent> InvoiceOut
             {
                 get { return invoiceOuts; }
             }
@@ -193,7 +194,7 @@ namespace DataLayer
                 get { return suppliers; }
             }
 
-            public override List<Product> Product
+            public override List<IState> Product
             {
                 get { return products; }
             }

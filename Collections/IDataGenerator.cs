@@ -8,5 +8,9 @@ namespace DataLayer
 {
     public interface IDataGenerator
     {
+        List<IUser> Clients { get; set; }
+        List<IUser> Workers { get; set; }
+        List<IUser> Suppliers { get; set; }
+        List<IEvent> Events { get; set; }
     }
 }
