@@ -9,14 +9,15 @@ namespace LogicLayer
 {
     public abstract class LogicLayerAbstractAPI
     {
-        public static LogicLayerAbstractAPI CreateLayer() 
+        private static IDataGenerator generatedData;
+        public static LogicLayerAbstractAPI CreateLayer(IDataGenerator generatedData) 
         {
-            return new Logic(DataLayerAbstractAPI.CreateLinq2SQL());
+            return new Logic(DataLayerAbstractAPI.CreateLinq2SQL(generatedData));
         }
 
         public abstract void sellProduct(IUser client, IUser worker, List<Product> products, string invoiceNumber, int day, int month, int year);
         public abstract void buyProduct(IUser supplier, IUser worker, List<Product> products, string invoiceNumber, int day, int month, int year);
-        private DataLayerAbstractAPI data = DataLayerAbstractAPI.CreateLinq2SQL ();
+        private DataLayerAbstractAPI data = DataLayerAbstractAPI.CreateLinq2SQL(generatedData);
 
         public class Logic : LogicLayerAbstractAPI
         {
