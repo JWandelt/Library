@@ -11,7 +11,8 @@ namespace DataLayer
         List<IUser> Clients { get; set; }
         List<IUser> Workers { get; set; }
         List<IUser> Suppliers { get; set; }
-        List<IEvent> Events { get; set; }
+        List<IEvent> EventsIn { get; set; }
+        List<IEvent> EventsOut { get; set; }
         List<IState> State { get; set; }
 
         public void initializeData(); 

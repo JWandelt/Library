@@ -15,6 +15,6 @@ namespace DataLayer
         int Day { get; set; }
         int Month { get; set; }
         int Year { get; set; }
-        List<Product> Products { get; set; }
+        List<IState> Products { get; set; }
     }
 }

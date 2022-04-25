@@ -67,6 +67,9 @@ namespace DataLayer
                 clients = data.Clients;
                 workers = data.Workers;
                 suppliers = data.Suppliers;
+                invoiceIns = data.EventsIn;
+                invoiceOuts = data.EventsOut;
+                products = data.State;
             }
 
             public override void addClient(IUser client)

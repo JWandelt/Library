@@ -15,10 +15,10 @@ namespace DataLayer
         private int month;
         private int year;
         private float price;
-        private List<Product> orderedProducts;
+        private List<IState> orderedProducts;
 
 
-        public InvoiceIn(IUser sender, IUser receiver, float price, string invoiceNumber, int day, int month, int year, List<Product> orderedProducts)
+        public InvoiceIn(IUser sender, IUser receiver, float price, string invoiceNumber, int day, int month, int year, List<IState> orderedProducts)
         {
             Sender = sender;
             Receiver = receiver;
@@ -37,7 +37,7 @@ namespace DataLayer
         public int Month { get { return month; } set { month = value; } }
         public int Year { get { return year; } set { year = value; } }
         public float Price { get { return price; } set { price = value; } }
-        public List<Product> Products { get { return orderedProducts; } set { orderedProducts = value; } }
+        public List<IState> Products { get { return orderedProducts; } set { orderedProducts = value; } }
 
         public string getDate()
         {
