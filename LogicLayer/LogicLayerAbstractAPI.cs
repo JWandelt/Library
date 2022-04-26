@@ -9,7 +9,6 @@ namespace LogicLayer
 {
     public abstract class LogicLayerAbstractAPI
     {
-        //private static IDataGenerator generated;
         public static LogicLayerAbstractAPI CreateLayer(IDataGenerator generatedData) 
         {
             return new Logic(DataLayerAbstractAPI.CreateLinq2SQL(generatedData));
@@ -24,7 +23,6 @@ namespace LogicLayer
             public DataLayerAbstractAPI data;
             public Logic(DataLayerAbstractAPI dataLayer)
             {
-                //data = dataLayer;
                 data = dataLayer;
             }
 
