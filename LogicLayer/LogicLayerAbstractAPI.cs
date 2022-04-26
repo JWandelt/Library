@@ -9,7 +9,7 @@ namespace LogicLayer
 {
     public abstract class LogicLayerAbstractAPI
     {
-        private static IDataGenerator generatedData;
+        //private static IDataGenerator generated;
         public static LogicLayerAbstractAPI CreateLayer(IDataGenerator generatedData) 
         {
             return new Logic(DataLayerAbstractAPI.CreateLinq2SQL(generatedData));
@@ -17,13 +17,14 @@ namespace LogicLayer
 
         public abstract void sellProduct(IUser client, IUser worker, List<IState> products, string invoiceNumber, int day, int month, int year);
         public abstract void buyProduct(IUser supplier, IUser worker, List<IState> products, string invoiceNumber, int day, int month, int year);
-        private DataLayerAbstractAPI data = DataLayerAbstractAPI.CreateLinq2SQL(generatedData);
+        public abstract DataLayerAbstractAPI getData();
 
         public class Logic : LogicLayerAbstractAPI
         {
-          
+            public DataLayerAbstractAPI data;
             public Logic(DataLayerAbstractAPI dataLayer)
             {
+                //data = dataLayer;
                 data = dataLayer;
             }
 
@@ -50,10 +51,11 @@ namespace LogicLayer
                 InvoiceIn invoice = new InvoiceIn(supplier, worker, price, invoiceNumber, day, month, year, products);
                 data.addInvoiceIn(invoice);
             }
+            public override DataLayerAbstractAPI getData()
+            {
+                return data;
+            }
         }
-        public DataLayerAbstractAPI getData()
-        {
-            return data;
-        }
+        
     }
 }
