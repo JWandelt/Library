@@ -29,24 +29,24 @@ namespace LogicLayer
             public override void sellProduct(IUser client, IUser worker, List<IState> products, string invoiceNumber, int day, int month, int year)
             {
                 float price = 0;
-                foreach (Product product in products)
+                foreach (IState product in products)
                 {
                     price += product.PricePerUnit * product.Quantity;
                     data.removeProduct(product, product.Quantity);
                 }
-                InvoiceOut invoice = new InvoiceOut(worker, client, price, invoiceNumber, day, month, year, products);
+                IEvent invoice = new InvoiceOut(worker, client, price, invoiceNumber, day, month, year, products);
                 data.addInvoiceOut(invoice);
             }
 
             public override void buyProduct(IUser supplier, IUser worker, List<IState> products, string invoiceNumber, int day, int month, int year)
             {
                 float price = 0;
-                foreach (Product product in products)
+                foreach (IState product in products)
                 {
                     price += product.PricePerUnit * product.Quantity;
                     data.addProductQuantity(product, product.Quantity);
                 }
-                InvoiceIn invoice = new InvoiceIn(supplier, worker, price, invoiceNumber, day, month, year, products);
+                IEvent invoice = new InvoiceIn(supplier, worker, price, invoiceNumber, day, month, year, products);
                 data.addInvoiceIn(invoice);
             }
             public override DataLayerAbstractAPI getData()

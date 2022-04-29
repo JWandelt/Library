@@ -1,18 +1,19 @@
-﻿using System;
+﻿using DataLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLayer
+namespace Tests.TestData
 {
-    public class Catalog : ICatalog
+    internal class TCatalog : ICatalog
     {
         private int itemID;
         private string itemName;
         private string itemShortDescription;
 
-        public Catalog(int itemID, string itemName, string itemShortDescription)
+        public TCatalog(int itemID, string itemName, string itemShortDescription)
         {
             this.itemID = itemID;
             this.itemName = itemName;
@@ -23,7 +24,4 @@ namespace DataLayer
         public string ItemName { get { return itemName; } set { itemName = value; } }
         public string ItemShortDescription { get { return itemShortDescription; } set { itemShortDescription = value; } }
     }
-
-
-
 }

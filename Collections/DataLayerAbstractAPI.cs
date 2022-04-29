@@ -149,7 +149,7 @@ namespace DataLayer
 
             public override void removeProduct(IState product, int amount)
             {
-                foreach(Product p in products)
+                foreach(IState p in products)
                 {
                     if (p.ItemID == product.ItemID)
                         p.Quantity -= amount;
@@ -168,7 +168,7 @@ namespace DataLayer
 
             public override void addProductQuantity(IState product, int amount)
             {
-                foreach (Product p in products)
+                foreach (IState p in products)
                 {
                     if (p == product)
                         p.Quantity += amount;

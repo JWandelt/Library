@@ -16,7 +16,6 @@ namespace DataLayer
         private int year;
         private float price;
         private List<IState> sentProducts;
-
         public InvoiceOut(IUser worker, IUser receiver, float price, string invoiceNumber, int day, int month, int year, List<IState> products)
         {
             sentBy = worker;

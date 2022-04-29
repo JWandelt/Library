@@ -11,6 +11,6 @@ namespace DataLayer
         public int ItemID { get; set; }
         public int Quantity { get; set; }
         public float PricePerUnit { get; set; }
-        public Catalog Catalog { get; set; }
+        public ICatalog Catalog { get; set; }
     }
 }
