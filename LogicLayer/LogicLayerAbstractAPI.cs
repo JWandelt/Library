@@ -34,8 +34,9 @@ namespace LogicLayer
                     price += product.PricePerUnit * product.Quantity;
                     data.removeProduct(product, product.Quantity);
                 }
-                IEvent invoice = new InvoiceOut(worker, client, price, invoiceNumber, day, month, year, products);
-                data.addInvoiceOut(invoice);
+              
+                //czyli tak to ma wygladac?
+                data.addInvoiceOut(worker, client, price, invoiceNumber, day, month, year, products);
             }
 
             public override void buyProduct(IUser supplier, IUser worker, List<IState> products, string invoiceNumber, int day, int month, int year)
@@ -47,7 +48,7 @@ namespace LogicLayer
                     data.addProductQuantity(product, product.Quantity);
                 }
                 IEvent invoice = new InvoiceIn(supplier, worker, price, invoiceNumber, day, month, year, products);
-                data.addInvoiceIn(invoice);
+                data.addInvoiceIn(supplier, worker, price, invoiceNumber, day, month, year, products);
             }
             public override DataLayerAbstractAPI getData()
             {

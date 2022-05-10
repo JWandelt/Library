@@ -18,10 +18,10 @@ namespace DataLayer
         public abstract void addSupplier(IUser supplier);
         public abstract void removeSupplier(int index);
         public abstract IEvent getInvoiceIn(int index);
-        public abstract void addInvoiceIn(IEvent invoice);
+        public abstract void addInvoiceIn(IUser supplier, IUser worker, float price, string invoiceNumber, int day, int month, int year, List<IState> products);
         public abstract void removeInvoiceIn(int index);
         public abstract IEvent getInvoiceOut(int index);
-        public abstract void addInvoiceOut(IEvent invoice);
+        public abstract void addInvoiceOut(IUser worker, IUser client, float price, string invoiceNumber, int day, int month, int year, List<IState> products);
         public abstract void removeInvoiceOut(int index);
         public abstract IState getProduct(int index);
         public abstract void addProduct(IState product);
@@ -77,14 +77,14 @@ namespace DataLayer
                 clients.Add(client);
             }
 
-            public override void addInvoiceIn(IEvent invoice)
+            public override void addInvoiceIn(IUser supplier, IUser worker, float price, string invoiceNumber, int day, int month, int year, List<IState> products)
             {
-                invoiceIns.Add(invoice);
+                invoiceIns.Add(new InvoiceIn(supplier, worker, price, invoiceNumber, day, month, year, products));
             }
 
-            public override void addInvoiceOut(IEvent invoice)
+            public override void addInvoiceOut(IUser worker, IUser client, float price,string invoiceNumber, int day, int month, int year, List <IState> products) 
             {
-                invoiceOuts.Add(invoice);
+                invoiceOuts.Add(new InvoiceOut(worker, client, price, invoiceNumber, day, month, year, products));
             }
 
             public override void addProduct(IState product)
@@ -204,6 +204,7 @@ namespace DataLayer
             {
                 get { return products; }
             }
+          
         }
     }
 }
