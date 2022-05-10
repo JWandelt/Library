@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    public class InvoiceIn : IEvent
+    internal class InvoiceIn : IEvent
     {
         IUser delieveredBy;
         IUser receivedBy;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    public class Product : IState
+    internal class Product : IState
     {
         private int itemID;
         int quantity;
