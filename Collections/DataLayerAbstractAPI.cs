@@ -36,7 +36,7 @@ namespace DataLayer
 
         public static DataLayerAbstractAPI CreateLinq2SQL(IDataGenerator data)
         {
-            return new Linq2SQL(data);
+            return new ProductionDataLayer(data);
         }
 
         public class CatalogDictionary : Dictionary<string, Catalog>
@@ -52,7 +52,7 @@ namespace DataLayer
             }
         }
 
-        public class Linq2SQL : DataLayerAbstractAPI
+        public class ProductionDataLayer : DataLayerAbstractAPI
         {
             private List<IUser> clients = new List<IUser>();
             private List<IUser> workers = new List<IUser>();
@@ -61,9 +61,10 @@ namespace DataLayer
             private List<IEvent> invoiceOuts = new List<IEvent>();
             private List<IState> products = new List<IState>();
             private CatalogDictionary WarehouseCatalog = new CatalogDictionary();
-            public Linq2SQL(IDataGenerator data)
+            public ProductionDataLayer(IDataGenerator data)
             {
                 data.initializeData();
+
                 clients = data.Clients;
                 workers = data.Workers;
                 suppliers = data.Suppliers;

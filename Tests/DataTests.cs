@@ -11,9 +11,9 @@ namespace Tests
         public void Startup()
         {
             TestDataGenerator data = new TestDataGenerator();
-            dataLayer = DataLayerAbstractAPI.CreateLinq2SQL(data);
+            dataLayer = DataTestDataLayer.bindData(data);
         }
-        DataLayerAbstractAPI dataLayer;
+        DataTestDataLayer dataLayer;
         
         [TestMethod]
         public void clientRepositoryState()
