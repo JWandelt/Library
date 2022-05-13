@@ -11,9 +11,9 @@ namespace Tests
         public void Startup()
         {
             TestDataGenerator data = new TestDataGenerator();
-            dataLayer = DataTestDataLayer.bindData(data);
+            dataLayer = DataTestDataAPI.bindData(data);
         }
-        DataTestDataLayer dataLayer;
+        DataTestDataAPI dataLayer;
         
         [TestMethod]
         public void clientRepositoryState()

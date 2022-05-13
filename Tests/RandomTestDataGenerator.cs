@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataLayer;
-
+using Tests.TestData;
 
 namespace Tests
 {
@@ -39,12 +39,12 @@ namespace Tests
         List<String> product = new List<String> { "Almonds","Walnuts","Coffee","Macadamia nuts"};
         List<String> productDescription = new List<String> { "100g","200g","Tasty arabica","Heavy on your wallet"};
 
-        public List<IUser> Clients { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public List<IUser> Workers { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public List<IUser> Suppliers { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public List<IEvent> EventsIn { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public List<IEvent> EventsOut { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public List<IState> State { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public List<IUser> Clients { get { return clients; } set { Clients = value; } }
+        public List<IUser> Workers { get { return workers; } set { workers = value; } }
+        public List<IUser> Suppliers { get { return suppliers; } set { suppliers = value; } }
+        public List<IEvent> EventsIn { get { return eventsIn; } set { eventsIn = value; } }
+        public List<IEvent> EventsOut { get { return eventsOut; } set { eventsOut = value; } }
+        public List<IState> State { get { return states; } set { states = value; } }
 
         public void randomizeData()
         {
@@ -58,7 +58,7 @@ namespace Tests
 
         public void initializeData()
         {
-            throw new NotImplementedException();
+            Clients.Add(new TClient(name[0], surname[0], 12, "C01", email[0], city[0], "Poland", "Grocka"));
         }
     }
 }

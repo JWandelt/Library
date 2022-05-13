@@ -8,7 +8,7 @@ using Tests.TestData;
 
 namespace Tests
 {
-    internal class DataTestDataLayer : DataLayerAbstractAPI
+    internal class LogicTestDataAPI : DataLayerAbstractAPI
     {
         private List<IUser> clients = new List<IUser>();
         private List<IUser> workers = new List<IUser>();
@@ -16,7 +16,7 @@ namespace Tests
         private List<IEvent> invoiceIns = new List<IEvent>();
         private List<IEvent> invoiceOuts = new List<IEvent>();
         private List<IState> products = new List<IState>();
-        public DataTestDataLayer(IDataGenerator testData)
+        public LogicTestDataAPI(IDataGenerator testData)
         {
             testData.initializeData();
 
@@ -142,9 +142,9 @@ namespace Tests
             workers.RemoveAt(index);
         }
 
-        public static DataTestDataLayer bindData(IDataGenerator testData)
+        public static LogicTestDataAPI bindData(IDataGenerator testData)
         {
-            return new DataTestDataLayer(testData);
+            return new LogicTestDataAPI(testData);
         }
     }
 }
