@@ -59,6 +59,8 @@ namespace Tests
         public void initializeData()
         {
             Clients.Add(new TClient(name[0], surname[0], 12, "C01", email[0], city[0], "Poland", "Grocka"));
+            Clients.Add(new TClient(name[1], surname[1], 12, "C02", email[1], city[1], "Poland", "Piotrkowska"));
+            Clients.Add(new TClient(name[2], surname[2], 12, "C02", email[2], city[2], "Poland", "Zielona"));
         }
     }
 }
