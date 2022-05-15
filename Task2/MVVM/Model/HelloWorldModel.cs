@@ -21,7 +21,7 @@ namespace MVVM.Model
         {
             repositoryData = GetData();
         }
-
+        
         /// <summary>
         /// Simulates data retrieval from a repository
         /// </summary>
