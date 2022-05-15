@@ -21,22 +21,7 @@ namespace MVVM.View
     {
         public HelloWorldView()
         {
-            
-        }
-
-        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void button_create (object sender, RoutedEventArgs e)
-        {
-            Console.WriteLine("Create");
-        }
-
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
+            InitializeComponent();
         }
     }
 }
