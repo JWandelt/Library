@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBook.cs" />
+	<Compile Include="DataContext.cs" />
+	<Compile Include="DataAbstractAPI.cs" />
     <Compile Include="LibraryDatabase.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
