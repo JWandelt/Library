@@ -8,8 +8,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServicesLayer", "ServicesLayer\ServicesLayer.csproj", "{B0E66BA8-3A4E-414A-BB41-2C9B90DEA495}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{1821977E-057F-41B5-A6D0-7AD14BA1345E}"
+<<<<<<< HEAD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{4694C1CE-0E6D-4ED4-BACE-98F06950026E}"
+=======
+>>>>>>> origin/main
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +32,13 @@ Global
 		{1821977E-057F-41B5-A6D0-7AD14BA1345E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1821977E-057F-41B5-A6D0-7AD14BA1345E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1821977E-057F-41B5-A6D0-7AD14BA1345E}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{4694C1CE-0E6D-4ED4-BACE-98F06950026E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4694C1CE-0E6D-4ED4-BACE-98F06950026E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4694C1CE-0E6D-4ED4-BACE-98F06950026E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4694C1CE-0E6D-4ED4-BACE-98F06950026E}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+>>>>>>> origin/main
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
