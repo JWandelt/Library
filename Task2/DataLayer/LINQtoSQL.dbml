@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Library" Class="LINQtoSQLDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=Library;Integrated Security=True" SettingsObjectName="DataLayer.Properties.Settings" SettingsPropertyName="LibraryConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.books" Member="books">
+    <Type Name="book">
+      <Column Name="bookID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="author_first_name" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="author_last_name" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="lent" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="book_lend_list" Member="lend_lists" ThisKey="bookID" OtherKey="bookID" Type="lend_list" />
+    </Type>
+  </Table>
+  <Table Name="dbo.registered_readers" Member="registered_readers">
+    <Type Name="registered_reader">
+      <Column Name="readerID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="first_name" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="last_name" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="registered_reader_lend_list" Member="lend_lists" ThisKey="readerID" OtherKey="readerID" Type="lend_list" />
+    </Type>
+  </Table>
+  <Table Name="dbo.lend_list" Member="lend_lists">
+    <Type Name="lend_list">
+      <Column Name="lend_listID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="bookID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="readerID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Association Name="book_lend_list" Member="book" ThisKey="bookID" OtherKey="bookID" Type="book" IsForeignKey="true" />
+      <Association Name="registered_reader_lend_list" Member="registered_reader" ThisKey="readerID" OtherKey="readerID" Type="registered_reader" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
