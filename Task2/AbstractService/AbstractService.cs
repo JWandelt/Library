@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataLayer;
+using Service.Data;
+using Service.IData;
 
 namespace Service
 {
@@ -19,7 +21,7 @@ namespace Service
         public abstract void addLendList(int bookID, int readerID);
         public abstract void removeLendList(int id);
         public abstract void editLendList(int id, int bookID, int readerID);
-        public abstract List<book> getData();
+        public abstract List<IBook> getData();
 
         public static ProductionService CreateLINQ2SQL()
         {
@@ -33,9 +35,15 @@ namespace Service
             {
                 this.db = db;
             }
-            public override List<book> getData()
+            public override List<IBook> getData()
             {
-                return db.books.ToList();
+                List<book> books = db.books.ToList();
+                List<IBook> result = new List<IBook>();
+                foreach(book book in books)
+                {
+                    result.Add(new Book(book.bookID, book.title, book.description, book.author_last_name, book.author_first_name, book.lent));
+                }
+                return result;
             }
 
             //CRUD operations implementation for the main program
@@ -218,6 +226,8 @@ namespace Service
 
                 return 0;
             }
+
+
         }
     }
 }
