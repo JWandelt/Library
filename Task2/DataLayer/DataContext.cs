@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    internal class DataContext
+    public class DataContext
     {
         private static LINQtoSQLDataContext db = new LINQtoSQLDataContext();
         
