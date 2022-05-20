@@ -8,10 +8,6 @@ namespace DataLayer
 {
     internal class DataContext
     {
-        private static LibraryDatabaseDataContext db = new LibraryDatabaseDataContext();
-        public static LibraryDatabaseDataContext getDatabase()
-        {
-            return db;
-        }
+        
     }
 }

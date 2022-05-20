@@ -12,10 +12,10 @@ namespace DataLayer
         public abstract void AddBookOnHand();
         public abstract void RemoveLentBook();
         public abstract void RemoveBookOnHand();
-        public static LibraryDatabaseDataContext CreateLINQ2SQL()
-        {
-            return DataContext.getDatabase();
-        }
+        //public static LibraryDatabaseDataContext CreateLINQ2SQL()
+        //{
+        //    return DataContext.getDatabase();
+        //}
         public class ProductionDataAPI : DataAbstractAPI
         {
             public override void AddBookOnHand()

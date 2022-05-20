@@ -42,13 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IBook.cs" />
-	<Compile Include="DataContext.cs" />
-	<Compile Include="DataAbstractAPI.cs" />
-    <Compile Include="LibraryDatabase.designer.cs">
+    <Compile Include="DataContext.cs" />
+    <Compile Include="DataAbstractAPI.cs" />
+    <Compile Include="LINQtoSQL.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LibraryDatabase.dbml</DependentUpon>
+      <DependentUpon>LINQtoSQL.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -59,13 +58,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="LibraryDatabase.dbml">
+    <None Include="LINQtoSQL.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>LibraryDatabase.designer.cs</LastGenOutput>
+      <LastGenOutput>LINQtoSQL.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="LibraryDatabase.dbml.layout">
-      <DependentUpon>LibraryDatabase.dbml</DependentUpon>
+    <None Include="LINQtoSQL.dbml.layout">
+      <DependentUpon>LINQtoSQL.dbml</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
