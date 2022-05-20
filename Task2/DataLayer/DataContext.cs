@@ -8,6 +8,11 @@ namespace DataLayer
 {
     internal class DataContext
     {
+        private static LINQtoSQLDataContext db = new LINQtoSQLDataContext();
         
+        public static LINQtoSQLDataContext connectDatabase()
+        {
+            return db;
+        }
     }
 }
