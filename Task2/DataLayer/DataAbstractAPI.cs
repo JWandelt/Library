@@ -16,7 +16,7 @@ namespace DataLayer
         public abstract void removeReader(int id);
         public abstract void editReader(int id, string first_name, string last_name);
         public abstract void addLendList(int bookID, int readerID);
-        public abstract void removeLendList(int bookID);
+        public abstract void removeLendList(int id);
         public abstract void editLendList(int id, int bookID, int readerID);
 
         public static LINQtoSQLDataContext CreateLINQ2SQL()
@@ -35,12 +35,14 @@ namespace DataLayer
             public override void addBook(string title, string first_name, string last_name, string description, bool lent)
             {
                 book b1 = new book();
+
                 b1.bookID = findFreeBookID();
                 b1.title = title;
                 b1.author_first_name = first_name;
                 b1.author_last_name = last_name;
                 b1.description = description;
                 b1.lent = false;
+
                 db.books.InsertOnSubmit(b1);
                 db.SubmitChanges();
             }
@@ -48,46 +50,96 @@ namespace DataLayer
             public override void addLendList(int bookID, int readerID)
             {
                 lend_list l1 = new lend_list();
+
                 l1.bookID = bookID;
                 l1.readerID = readerID;
+
+                db.lend_lists.InsertOnSubmit(l1);
+                db.SubmitChanges();
 
             }
 
             public override void addReader(string first_name, string last_name)
             {
-                throw new NotImplementedException();
+                registered_reader r1 = new registered_reader(); 
+
+                r1.readerID = findFreeReaderID();
+                r1.first_name = first_name;
+                r1.last_name = last_name;
+
+                db.registered_readers.InsertOnSubmit(r1);
+                db.SubmitChanges();
             }
 
             public override void editBook(int id, string title, string first_name, string last_name, string description, bool lent)
             {
-                throw new NotImplementedException();
+                book b1 = new book();
+
+                b1 = db.books.SingleOrDefault(x => x.bookID == id);
+                b1.bookID = id;
+                b1.title = title;
+                b1.author_last_name = last_name;
+                b1.author_first_name = first_name;
+                b1.description = description;
+                b1.lent = lent;
+
+                db.SubmitChanges();
             }
 
             public override void editLendList(int id, int bookID, int readerID)
             {
-                throw new NotImplementedException();
+                lend_list l1 = new lend_list();
+
+                l1 = db.lend_lists.SingleOrDefault(x => x.lend_listID == id);
+                l1.bookID = bookID;
+                l1.readerID = readerID;
+
+                db.SubmitChanges();
             }
 
             public override void editReader(int id, string first_name, string last_name)
             {
-                throw new NotImplementedException();
+                registered_reader r1 = new registered_reader();
+
+                r1 = db.registered_readers.SingleOrDefault(x => x.readerID == id);
+                r1.first_name = first_name;
+                r1.last_name = last_name;
+
+                db.SubmitChanges();
             }
 
             public override void removeBook(int id)
             {
-                throw new NotImplementedException();
+                book b1 = new book();
+
+                b1 = db.books.SingleOrDefault(x => x.bookID == id); 
+
+                db.books.DeleteOnSubmit(b1);
+                db.SubmitChanges();
+
             }
 
-            public override void removeLendList(int bookID)
+            public override void removeLendList(int id)
             {
-                throw new NotImplementedException();
+                lend_list l1 = new lend_list();
+
+                l1 = db.lend_lists.SingleOrDefault(x => x.lend_listID == id);
+
+                db.lend_lists.DeleteOnSubmit(l1);
+                db.SubmitChanges();
             }
 
             public override void removeReader(int id)
             {
-                throw new NotImplementedException();
+                registered_reader r1 = new registered_reader();
+
+                r1 = db.registered_readers.SingleOrDefault(x => x.readerID == id);
+
+                db.registered_readers.DeleteOnSubmit(r1);
+                db.SubmitChanges();
             }
 
+            //Generators of free ids
             public decimal findFreeBookID()
             {
                 decimal id;
