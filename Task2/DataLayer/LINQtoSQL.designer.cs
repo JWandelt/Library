@@ -36,6 +36,9 @@ namespace DataLayer
     partial void Insertregistered_reader(registered_reader instance);
     partial void Updateregistered_reader(registered_reader instance);
     partial void Deleteregistered_reader(registered_reader instance);
+    partial void Insertlend_list(lend_list instance);
+    partial void Updatelend_list(lend_list instance);
+    partial void Deletelend_list(lend_list instance);
     #endregion
 		
 		public LINQtoSQLDataContext() : 
@@ -111,6 +114,8 @@ namespace DataLayer
 		
 		private bool _lent;
 		
+		private EntitySet<lend_list> _lend_lists;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -131,6 +136,7 @@ namespace DataLayer
 		
 		public book()
 		{
+			this._lend_lists = new EntitySet<lend_list>(new Action<lend_list>(this.attach_lend_lists), new Action<lend_list>(this.detach_lend_lists));
 			OnCreated();
 		}
 		
@@ -254,6 +260,19 @@ namespace DataLayer
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="book_lend_list", Storage="_lend_lists", ThisKey="bookID", OtherKey="bookID")]
+		public EntitySet<lend_list> lend_lists
+		{
+			get
+			{
+				return this._lend_lists;
+			}
+			set
+			{
+				this._lend_lists.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -273,6 +292,18 @@ namespace DataLayer
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void attach_lend_lists(lend_list entity)
+		{
+			this.SendPropertyChanging();
+			entity.book = this;
+		}
+		
+		private void detach_lend_lists(lend_list entity)
+		{
+			this.SendPropertyChanging();
+			entity.book = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.registered_readers")]
@@ -286,6 +317,8 @@ namespace DataLayer
 		private string _first_name;
 		
 		private string _last_name;
+		
+		private EntitySet<lend_list> _lend_lists;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -301,6 +334,7 @@ namespace DataLayer
 		
 		public registered_reader()
 		{
+			this._lend_lists = new EntitySet<lend_list>(new Action<lend_list>(this.attach_lend_lists), new Action<lend_list>(this.detach_lend_lists));
 			OnCreated();
 		}
 		
@@ -364,6 +398,19 @@ namespace DataLayer
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="registered_reader_lend_list", Storage="_lend_lists", ThisKey="readerID", OtherKey="readerID")]
+		public EntitySet<lend_list> lend_lists
+		{
+			get
+			{
+				return this._lend_lists;
+			}
+			set
+			{
+				this._lend_lists.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -383,11 +430,25 @@ namespace DataLayer
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void attach_lend_lists(lend_list entity)
+		{
+			this.SendPropertyChanging();
+			entity.registered_reader = this;
+		}
+		
+		private void detach_lend_lists(lend_list entity)
+		{
+			this.SendPropertyChanging();
+			entity.registered_reader = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.lend_list")]
-	public partial class lend_list
+	public partial class lend_list : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private decimal _lend_listID;
 		
@@ -395,11 +456,30 @@ namespace DataLayer
 		
 		private decimal _readerID;
 		
+		private EntityRef<book> _book;
+		
+		private EntityRef<registered_reader> _registered_reader;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onlend_listIDChanging(decimal value);
+    partial void Onlend_listIDChanged();
+    partial void OnbookIDChanging(decimal value);
+    partial void OnbookIDChanged();
+    partial void OnreaderIDChanging(decimal value);
+    partial void OnreaderIDChanged();
+    #endregion
+		
 		public lend_list()
 		{
+			this._book = default(EntityRef<book>);
+			this._registered_reader = default(EntityRef<registered_reader>);
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_lend_listID", DbType="Decimal(18,0) NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_lend_listID", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
 		public decimal lend_listID
 		{
 			get
@@ -410,7 +490,11 @@ namespace DataLayer
 			{
 				if ((this._lend_listID != value))
 				{
+					this.Onlend_listIDChanging(value);
+					this.SendPropertyChanging();
 					this._lend_listID = value;
+					this.SendPropertyChanged("lend_listID");
+					this.Onlend_listIDChanged();
 				}
 			}
 		}
@@ -426,7 +510,15 @@ namespace DataLayer
 			{
 				if ((this._bookID != value))
 				{
+					if (this._book.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnbookIDChanging(value);
+					this.SendPropertyChanging();
 					this._bookID = value;
+					this.SendPropertyChanged("bookID");
+					this.OnbookIDChanged();
 				}
 			}
 		}
@@ -442,8 +534,104 @@ namespace DataLayer
 			{
 				if ((this._readerID != value))
 				{
+					if (this._registered_reader.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnreaderIDChanging(value);
+					this.SendPropertyChanging();
 					this._readerID = value;
+					this.SendPropertyChanged("readerID");
+					this.OnreaderIDChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="book_lend_list", Storage="_book", ThisKey="bookID", OtherKey="bookID", IsForeignKey=true)]
+		public book book
+		{
+			get
+			{
+				return this._book.Entity;
+			}
+			set
+			{
+				book previousValue = this._book.Entity;
+				if (((previousValue != value) 
+							|| (this._book.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._book.Entity = null;
+						previousValue.lend_lists.Remove(this);
+					}
+					this._book.Entity = value;
+					if ((value != null))
+					{
+						value.lend_lists.Add(this);
+						this._bookID = value.bookID;
+					}
+					else
+					{
+						this._bookID = default(decimal);
+					}
+					this.SendPropertyChanged("book");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="registered_reader_lend_list", Storage="_registered_reader", ThisKey="readerID", OtherKey="readerID", IsForeignKey=true)]
+		public registered_reader registered_reader
+		{
+			get
+			{
+				return this._registered_reader.Entity;
+			}
+			set
+			{
+				registered_reader previousValue = this._registered_reader.Entity;
+				if (((previousValue != value) 
+							|| (this._registered_reader.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._registered_reader.Entity = null;
+						previousValue.lend_lists.Remove(this);
+					}
+					this._registered_reader.Entity = value;
+					if ((value != null))
+					{
+						value.lend_lists.Add(this);
+						this._readerID = value.readerID;
+					}
+					else
+					{
+						this._readerID = default(decimal);
+					}
+					this.SendPropertyChanged("registered_reader");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
