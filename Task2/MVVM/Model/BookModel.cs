@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MVVM.Model
 {
-    internal class BookModel
+    public class BookModel
     {
         private readonly AbstractService service;
         public BookModel(AbstractService service)
