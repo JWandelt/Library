@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
-    <Compile Include="DataAbstractAPI.cs" />
     <Compile Include="Ibook.cs" />
     <Compile Include="Ilend_list.cs" />
     <Compile Include="Iregistered_reader.cs" />

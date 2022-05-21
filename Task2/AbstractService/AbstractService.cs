@@ -254,12 +254,33 @@ namespace Service
 
             public override void lendABook(decimal bookID, decimal readerID)
             {
-                throw new NotImplementedException();
+                book b1 = new book();
+                
+                //Changing the lent status of a specified book to true
+                b1 = db.books.SingleOrDefault(x => x.bookID == bookID);
+                b1.lent = true;
+
+                //Creating a lendlist record 
+                lend_list l1 = new lend_list();
+                l1.lend_listID = findFreeLendListID();
+                l1.bookID = bookID;
+                l1.readerID = readerID;
+
+                db.SubmitChanges();
             }
 
             public override void cancelLease(decimal bookID)
             {
-                throw new NotImplementedException();
+                book b1 = new book();
+                
+                //Changing the lent status of a specified book to false
+                b1 = db.books.SingleOrDefault(x => x.bookID == bookID);
+                b1.lent = false;
+
+                //Removing lendlist record
+                db.lend_lists.DeleteOnSubmit(db.lend_lists.SingleOrDefault(x => x.bookID == bookID));
+
+                db.SubmitChanges();
             }
         }
     }
