@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Service.IData
 {
-    internal interface ILendList
+    public interface ILendList
     {
         decimal bookID { get; set; }
         decimal lend_listID { get; set; }

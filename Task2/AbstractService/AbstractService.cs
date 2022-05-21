@@ -21,7 +21,11 @@ namespace Service
         public abstract void addLendList(int bookID, int readerID);
         public abstract void removeLendList(int id);
         public abstract void editLendList(int id, int bookID, int readerID);
+        public abstract void lendABook(decimal bookID, decimal readerID);
+        public abstract void cancelLease(decimal bookID);
         public abstract List<IBook> getAllBooks();
+        public abstract List<IReader> getAllReader();
+        public abstract List<ILendList> getAllLendList();
 
         public static ProductionService CreateLINQ2SQL()
         {
@@ -42,6 +46,27 @@ namespace Service
                 foreach(book book in books)
                 {
                     result.Add(new Book(book.bookID, book.title, book.description, book.author_last_name, book.author_first_name, book.lent));
+                }
+                return result;
+            }
+            public override List<IReader> getAllReader()
+            {
+                List<registered_reader> readers = db.registered_readers.ToList();
+                List<IReader> result = new List<IReader>();
+                foreach (registered_reader r1 in readers)
+                {
+                    result.Add(new Reader(r1.readerID, r1.first_name, r1.last_name));
+                }
+                return result;
+            }
+
+            public override List<ILendList> getAllLendList()
+            {
+                List<lend_list> lendlists = db.lend_lists.ToList();
+                List<ILendList> result = new List<ILendList>();
+                foreach (lend_list l1 in lendlists)
+                {
+                    result.Add(new LendList(l1.lend_listID, l1.bookID, l1.readerID));
                 }
                 return result;
             }
@@ -227,7 +252,15 @@ namespace Service
                 return 0;
             }
 
+            public override void lendABook(decimal bookID, decimal readerID)
+            {
+                throw new NotImplementedException();
+            }
 
+            public override void cancelLease(decimal bookID)
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }
