@@ -26,11 +26,11 @@ namespace MVVM.View
         List<IReader> r;
         public HelloWorldView()
         {
-            r = db.getAllReader();
-            InitializeComponent();
-            DataGridReaders.ItemsSource = r;
-            //DataGridBooks.ItemsSource = t.Books;
-            DataGridLent.ItemsSource = db.getAllLendList();
+            //r = db.getAllReader();
+            //InitializeComponent();
+            //DataGridReaders.ItemsSource = r;
+            ////DataGridBooks.ItemsSource = t.Books;
+            //DataGridLent.ItemsSource = db.getAllLendList();
         }
 
        
