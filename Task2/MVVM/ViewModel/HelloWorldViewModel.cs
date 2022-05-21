@@ -17,10 +17,12 @@ namespace MVVM.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private ICommand mUpdater;
+        private string title;
+        public string TITLE { get { return title; } set { title = value; } }
         public HelloWorldViewModel()
         {
             //r = db.getAllReader();
-            InitializeComponent();
+
             //DataGridReaders.ItemsSource = r;
             // DataGridBooks.ItemsSource = db.getAllBooks();
             //DataGridLent.ItemsSource = db.getAllLendList();
@@ -30,9 +32,7 @@ namespace MVVM.ViewModel
         {
             AbstractService abstractService = AbstractService.CreateLINQ2SQL();
             BookModel book = new BookModel(abstractService);
-            book.Service.addBook(TitleBox.Text, NameBox.Text, SurnameBox.Text, DescriptionBox.Text, false);
-            
-            
+            book.Service.addBook(title, "test", "test", "test", false);
         }
 
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MVVM.View;
+using MVVM.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,6 +15,14 @@ namespace MVVM
     /// </summary>
     public partial class App : Application
     {
-
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            MainWindow = new HelloWorldView()
+            {
+                DataContext = new LibraryViewModel()
+            };
+            MainWindow.Show();
+            base.OnStartup(e);
+        }
     }
 }

@@ -23,17 +23,20 @@ namespace MVVM.View
     public partial class HelloWorldView : Window
     {
         AbstractService db = AbstractService.CreateLINQ2SQL();
+        LibraryViewModel lb = new LibraryViewModel();
         List<IReader> r;
         public HelloWorldView()
         {
             //r = db.getAllReader();
-            //InitializeComponent();
+            InitializeComponent();
             //DataGridReaders.ItemsSource = r;
-            ////DataGridBooks.ItemsSource = t.Books;
+            //DataGridBooks.ItemsSource = lb.Books;
             //DataGridLent.ItemsSource = db.getAllLendList();
         }
 
-       
-       
+        private void SurnamaeBox_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

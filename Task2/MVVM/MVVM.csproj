@@ -71,10 +71,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\AddBookCommand.cs" />
+    <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Model\BookModel.cs" />
     <Compile Include="Model\LendListModel.cs" />
     <Compile Include="Model\ReaderModel.cs" />
     <Compile Include="ViewModel\HelloWorldViewModel.cs" />
+    <Compile Include="ViewModel\LibraryViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\HelloWorldView.xaml.cs">
       <DependentUpon>HelloWorldView.xaml</DependentUpon>
     </Compile>
@@ -96,7 +100,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\HelloWorldModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
