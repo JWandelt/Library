@@ -8,6 +8,7 @@ namespace DataLayer
 {
     public class DataContext
     {
+
         private static LINQtoSQLDataContext db = new LINQtoSQLDataContext();
         
         public static LINQtoSQLDataContext connectDatabase()
