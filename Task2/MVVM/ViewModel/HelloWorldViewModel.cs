@@ -5,8 +5,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using MVVM.Model;
+using Service;
 
 namespace MVVM.ViewModel
 {
@@ -24,10 +26,12 @@ namespace MVVM.ViewModel
             //DataGridLent.ItemsSource = db.getAllLendList();
         }
 
-        public ICommand buttonClicked()
+        public void ButtonAddBook(object sender, RoutedEventArgs e)
         {
-            TitleBox.Text = "aaa";
-            return mUpdater;
+            AbstractService abstractService = AbstractService.CreateLINQ2SQL();
+            BookModel book = new BookModel(abstractService);
+            book.Service.addBook(TitleBox.Text, NameBox.Text, SurnameBox.Text, DescriptionBox.Text, false);
+            
             
         }
 
