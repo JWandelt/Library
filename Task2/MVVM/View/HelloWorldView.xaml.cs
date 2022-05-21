@@ -1,4 +1,5 @@
-﻿using Service;
+﻿using MVVM.ViewModel;
+using Service;
 using Service.IData;
 using System;
 using System.Collections.Generic;
@@ -25,11 +26,11 @@ namespace MVVM.View
         List<IReader> r;
         public HelloWorldView()
         {
-            //r = db.getAllReader();
-            //InitializeComponent();
-            //DataGridReaders.ItemsSource = r;
-            // DataGridBooks.ItemsSource = db.getAllBooks();
-            //DataGridLent.ItemsSource = db.getAllLendList();
+            r = db.getAllReader();
+            InitializeComponent();
+            DataGridReaders.ItemsSource = r;
+            //DataGridBooks.ItemsSource = t.Books;
+            DataGridLent.ItemsSource = db.getAllLendList();
         }
 
        
