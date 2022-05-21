@@ -11,6 +11,5 @@ namespace MVVM.Model
     {
         AbstractService db = AbstractService.CreateLINQ2SQL();
 
-        
     }
 }

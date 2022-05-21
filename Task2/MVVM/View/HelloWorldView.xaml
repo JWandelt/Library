@@ -11,17 +11,17 @@
     <Grid Margin="0,0,0,-6">
         <DataGrid x:Name="DataGridBooks" AutoGenerateColumns="False" CanUserAddRows="False" Margin="16,20,730,298">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding bookID}" Width="100"  IsReadOnly="True"/>
-                <DataGridTextColumn Header="Title" Binding="{Binding title}" Width="100"  IsReadOnly="True"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding author_first_name}" Width="100"  IsReadOnly="True"/>
-                <DataGridTextColumn Header="Surname" Binding="{Binding author_last_name}" Width="100"  IsReadOnly="True"/>
+                <DataGridTextColumn x:Name ="BookIDColumn" Header="ID" Binding="{Binding bookID}" Width="100"  IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="BookTitleColumn" Header="Title" Binding="{Binding title}" Width="100"  IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="BookNameColumn" Header="Name" Binding="{Binding author_first_name}" Width="100"  IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="BookSurnameColumn" Header="Surname" Binding="{Binding author_last_name}" Width="100"  IsReadOnly="True"/>
                 <DataGridTextColumn Header="Lent" Binding="{Binding lent}" Width="50"  IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox x:Name="TitleBox" HorizontalAlignment="Left" Margin="504,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="112"/>
-        <TextBox x:Name="textBox1_Copy" HorizontalAlignment="Left" Margin="504,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="113" Height="19"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="504,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="113"/>
-        <Button  x:Name="buttonAddBook" Content="Add book" HorizontalAlignment="Left" Margin="646,42,0,0" VerticalAlignment="Top" Padding="2" Command="{Binding Path =buttonClicked}"/>
+        <TextBox x:Name="IDBox" HorizontalAlignment="Left" Margin="504,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="TitleBox" HorizontalAlignment="Left" Margin="504,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="113" Height="19"/>
+        <TextBox x:Name="NameBox" HorizontalAlignment="Left" Margin="504,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="113"/>
+        <Button  x:Name="SurnameBox" Content="Add book" HorizontalAlignment="Left" Margin="646,42,0,0" VerticalAlignment="Top" Padding="2" Click="ButtonAddBook"/>
         <Button x:Name="buttonEditBook" Content="Edit book" HorizontalAlignment="Left" Margin="646,73,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.474,2.236" Padding="2"/>
         <DataGrid x:Name="DataGridReaders" AutoGenerateColumns="False"
               CanUserAddRows="False" Margin="27,215,871,103">
