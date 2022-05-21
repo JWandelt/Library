@@ -22,7 +22,6 @@
         <TextBox x:Name="TitleBox" HorizontalAlignment="Left" Margin="504,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="113" Height="19"/>
         <TextBox x:Name="NameBox" HorizontalAlignment="Left" Margin="504,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="113"/>
         <TextBox x:Name="SurnameBox" HorizontalAlignment="Left" Margin="504,103,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="113"/>
-
         <TextBox x:Name="textBox2" HorizontalAlignment="Left" Margin="490,167,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="113"/>
         <Button x:Name="SurnamaeBox" Content="Add book" HorizontalAlignment="Left" Margin="646,42,0,0" VerticalAlignment="Top" Padding="2" Click="ButtonAddBook"/>
         <Button x:Name="buttonEditBook" Content="Edit book" HorizontalAlignment="Left" Margin="646,73,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.474,2.236" Padding="2"/>
