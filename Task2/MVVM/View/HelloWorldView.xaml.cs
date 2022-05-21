@@ -33,9 +33,7 @@ namespace MVVM.View
             DataGridLent.ItemsSource = db.getAllLendList();
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
+       
     }
 }
