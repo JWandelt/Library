@@ -21,7 +21,7 @@ namespace Service
         public abstract void addLendList(int bookID, int readerID);
         public abstract void removeLendList(int id);
         public abstract void editLendList(int id, int bookID, int readerID);
-        public abstract List<IBook> getData();
+        public abstract List<IBook> getAllBooks();
 
         public static ProductionService CreateLINQ2SQL()
         {
@@ -35,7 +35,7 @@ namespace Service
             {
                 this.db = db;
             }
-            public override List<IBook> getData()
+            public override List<IBook> getAllBooks()
             {
                 List<book> books = db.books.ToList();
                 List<IBook> result = new List<IBook>();
