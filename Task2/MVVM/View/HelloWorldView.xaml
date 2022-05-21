@@ -9,14 +9,13 @@
         >
 
     <Grid Margin="0,0,0,-6">
-        <DataGrid x:Name="DataGridBooks" AutoGenerateColumns="False"
-            ItemsSource="{Binding StudentRecord.StudentRecords}" CanUserAddRows="False" Margin="16,20,730,298">
+        <DataGrid x:Name="DataGridBooks" AutoGenerateColumns="False" CanUserAddRows="False" Margin="16,20,730,298">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Name}" Width="100"  IsReadOnly="True"/>
-                <DataGridTextColumn Header="Title" Binding="{Binding Name}" Width="100"  IsReadOnly="True"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Age}" Width="100"  IsReadOnly="True"/>
-                <DataGridTextColumn Header="Surname" Binding="{Binding Age}" Width="100"  IsReadOnly="True"/>
-                <DataGridTextColumn Header="Lent" Binding="{Binding Age}" Width="50"  IsReadOnly="True"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding bookID}" Width="100"  IsReadOnly="True"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding title}" Width="100"  IsReadOnly="True"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding author_first_name}" Width="100"  IsReadOnly="True"/>
+                <DataGridTextColumn Header="Surname" Binding="{Binding author_last_name}" Width="100"  IsReadOnly="True"/>
+                <DataGridTextColumn Header="Lent" Binding="{Binding lent}" Width="50"  IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Margin="504,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="112"/>
@@ -25,11 +24,11 @@
         <Button x:Name="buttonAddBook" Content="Add book" HorizontalAlignment="Left" Margin="646,42,0,0" VerticalAlignment="Top" Padding="2"/>
         <Button x:Name="buttonEditBook" Content="Edit book" HorizontalAlignment="Left" Margin="646,73,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.474,2.236" Padding="2"/>
         <DataGrid x:Name="DataGridReaders" AutoGenerateColumns="False"
-            ItemsSource="{Binding StudentRecord.StudentRecords}" CanUserAddRows="False" Margin="27,215,871,103">
+              CanUserAddRows="False" Margin="27,215,871,103">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Name}" Width="100"  IsReadOnly="True"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="100"  IsReadOnly="True"/>
-                <DataGridTextColumn Header="Surname" Binding="{Binding Age}" Width="100"  IsReadOnly="True"/>
+                <DataGridTextColumn Header="ID" Binding ="{Binding readerID}"  Width="100"  IsReadOnly="True"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding first_name}" Width="100"  IsReadOnly="True"/>
+                <DataGridTextColumn Header="Surname" Binding="{Binding last_name}" Width="100"  IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
         <TextBox x:Name="textBox1_Copy1" HorizontalAlignment="Left" Margin="358,233,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="112"/>
@@ -42,13 +41,15 @@
         <Button x:Name="buttonRemoveBook" Content="Remove book" HorizontalAlignment="Left" Margin="646,147,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.474,2.236" Padding="2"/>
         <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Margin="358,329,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="113"/>
         <TextBox x:Name="textBox_Copy2" HorizontalAlignment="Left" Margin="504,103,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="113"/>
-        <DataGrid x:Name="DataGridLent" AutoGenerateColumns="False" Margin="928,33,68,189">
+        <DataGrid x:Name="DataGridLent" AutoGenerateColumns="False" Margin="848,33,68,189">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="BookID" Binding="{Binding Name}" Width="100"  IsReadOnly="True"/>
+                <DataGridTextColumn Header="ID" Binding = "{Binding lend_listID}" Width="100"  IsReadOnly="True"/>
+                <DataGridTextColumn Header="BookID" Binding = "{Binding bookdID}" Width="100"  IsReadOnly="True"/>
                 <DataGridTextColumn Header="ReaderID" Binding="{Binding Name}" Width="100"  IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
+        <DataGrid Name="smth" Margin="646,311,225,29"/>
     </Grid>
 
 </Window>

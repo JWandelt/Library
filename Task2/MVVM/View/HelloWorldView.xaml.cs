@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Service;
+using Service.IData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,15 @@ namespace MVVM.View
     /// </summary>
     public partial class HelloWorldView : Window
     {
+        AbstractService db = AbstractService.CreateLINQ2SQL();
+        List<IReader> r;
         public HelloWorldView()
         {
+            r = db.getAllReader();
             InitializeComponent();
+            DataGridReaders.ItemsSource = r;
+            DataGridBooks.ItemsSource = db.getAllBooks();
+            DataGridLent.ItemsSource = db.getAllLendList();
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
