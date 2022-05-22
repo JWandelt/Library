@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractDataAPI.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="Ibook.cs" />
     <Compile Include="Ilend_list.cs" />

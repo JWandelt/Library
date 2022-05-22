@@ -29,7 +29,7 @@ namespace Service
 
         public static ProductionService CreateLINQ2SQL()
         {
-            return new ProductionService(DataContext.connectDatabase());
+            return new ProductionService(AbstractDataAPI.ConnectToDatabase());
         }
 
         public class ProductionService : AbstractService
