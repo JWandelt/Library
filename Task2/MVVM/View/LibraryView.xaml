@@ -16,6 +16,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Row="0" Grid.Column="0" >
@@ -31,7 +32,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
-                    <DataGrid x:Name="DataGridBooks" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding Books}">
+                    <DataGrid x:Name="DataGridBooks" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding Books}" SelectionUnit="FullRow" SelectedItem="{Binding SelectedBook}">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name ="BookIDColumn" Header="ID" Binding="{Binding bookID}" Width="100"  IsReadOnly="True"/>
                             <DataGridTextColumn x:Name="BookTitleColumn" Header="Title" Binding="{Binding title}" Width="100"  IsReadOnly="True"/>
@@ -144,6 +145,16 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
+            <Grid Grid.Row="0" Margin="100 0 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Book description" FontSize="25" HorizontalAlignment="Center" Margin="0 0 0 5"/>
+                <TextBlock Grid.Row="1" Text="{Binding SelectedBook.description}" Background="White" Padding="5" TextWrapping="Wrap" Width="300" Height="200"/>
+                
+            </Grid>
+            
             <DataGrid Grid.Row="1" x:Name="DataGridLent" AutoGenerateColumns="False" ItemsSource="{Binding LendLists}"  Margin="100 10 10 10">
 
                 <DataGrid.Columns>

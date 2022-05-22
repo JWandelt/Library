@@ -21,6 +21,7 @@ namespace MVVM.ViewModel
         private List<IReader> readers = new List<IReader>();
         private List<IBook> books = new List<IBook>();
         private List<ILendList> lendLists = new List<ILendList>();
+        private IBook selectedBook;
         
         public LibraryViewModel()
         {
@@ -75,6 +76,23 @@ namespace MVVM.ViewModel
                 OnPropertyChanged(nameof(LendLists));
             }
         }
+
+        public IBook SelectedBook
+        {
+            get
+            {
+                return selectedBook;
+            }
+            set
+            {
+                if(selectedBook != value)
+                {
+                    selectedBook = value;
+                    OnPropertyChanged(nameof(SelectedBook));
+                }
+            }
+        }
+
         public AbstractService Service { get { return service; } }
 
         public void RefreshReaders()
