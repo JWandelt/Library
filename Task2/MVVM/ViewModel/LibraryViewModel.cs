@@ -128,7 +128,7 @@ namespace MVVM.ViewModel
             }
         }
 
-        public string _firstName;
+        private string _firstName;
         public string FirstName
         {
             get
@@ -172,5 +172,9 @@ namespace MVVM.ViewModel
         public ICommand AddBookCommand { get; }
         public ICommand DeleteBookCommand { get; }
         public ICommand EditBookCommand { get; }
+        public ICommand AddReaderCommand { get; }
+        public ICommand EditReaderCommand { get; }
+        public ICommand DeleteReaderCommand { get; }
+
     }
 }
