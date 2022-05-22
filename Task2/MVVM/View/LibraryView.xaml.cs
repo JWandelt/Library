@@ -20,23 +20,11 @@ namespace MVVM.View
     /// <summary>
     /// Interaction logic for HelloWorldView.xaml
     /// </summary>
-    public partial class HelloWorldView : Window
+    public partial class LibraryView : Window
     {
-        AbstractService db = AbstractService.CreateLINQ2SQL();
-        LibraryViewModel lb = new LibraryViewModel();
-        List<IReader> r;
-        public HelloWorldView()
+        public LibraryView()
         {
-            //r = db.getAllReader();
             InitializeComponent();
-            //DataGridReaders.ItemsSource = r;
-            //DataGridBooks.ItemsSource = lb.Books;
-            //DataGridLent.ItemsSource = db.getAllLendList();
-        }
-
-        private void SurnamaeBox_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
