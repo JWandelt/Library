@@ -18,7 +18,7 @@ namespace MVVM.ViewModel
         public LibraryViewModel()
         {
             b = new BookModel(service);
-            AddBookCommand = new AddBookCommand();
+            AddBookCommand = new AddBookCommand(this, b);
         }
         public List<IBook> Books { get { return b.Service.getAllBooks(); } }
         private string _title;
