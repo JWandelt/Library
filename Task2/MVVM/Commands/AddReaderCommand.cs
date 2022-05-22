@@ -40,6 +40,7 @@ namespace MVVM.Commands
             r.Service.addReader(lb.FirstName, lb.LastName);
             lb.FirstName = null;
             lb.LastName = null;
+            lb.RefreshReaders();
         }
     }
 }

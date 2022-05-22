@@ -36,6 +36,8 @@ namespace MVVM.Commands
             libraryViewModel.Service.lendABook(libraryViewModel.BookIDToLease, libraryViewModel.ReaderIDToLease);
             libraryViewModel.ReaderIDToLease = 0;
             libraryViewModel.BookIDToLease = 0;
+            libraryViewModel.RefreshLendLists();
+            libraryViewModel.RefreshBooks();
         }
     }
 }

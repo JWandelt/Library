@@ -23,6 +23,7 @@ namespace MVVM.Commands
         {
             b.Service.removeBook(libraryViewModel.BookIDToRemove);
             libraryViewModel.BookIDToRemove = 0;
+            libraryViewModel.RefreshBooks();
         }
     }
 }

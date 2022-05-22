@@ -23,6 +23,7 @@ namespace MVVM.Commands
         {
             reader.Service.removeReader(library.ReaderIDToremove);
             library.ReaderIDToremove = 0;
+            library.RefreshReaders();
         }
     }
 }

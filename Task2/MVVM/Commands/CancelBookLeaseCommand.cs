@@ -35,6 +35,8 @@ namespace MVVM.Commands
         {
             libraryViewModel.Service.cancelLease(libraryViewModel.BookIDToCancelLease);
             libraryViewModel.BookIDToCancelLease = 0;
+            libraryViewModel.RefreshLendLists();
+            libraryViewModel.RefreshBooks();
         }
     }
 }

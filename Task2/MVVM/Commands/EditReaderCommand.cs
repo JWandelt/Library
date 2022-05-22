@@ -33,6 +33,7 @@ namespace MVVM.Commands
             lb.ReaderID = 0;
             lb.FirstName = null;
             lb.LastName = null;
+            lb.RefreshReaders();
         }
 
         private void LibraryViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

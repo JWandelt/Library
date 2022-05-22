@@ -278,20 +278,17 @@ namespace Service
                 //db.SubmitChanges();
             }
 
-            public override void cancelLease(decimal bookID)
+            public override void cancelLease(decimal lendListID)
             {
                 Ibook b1;
-                
-                //Changing the lent status of a specified book to false
-                b1 = data.GetBooks().SingleOrDefault(x => x.bookID == bookID);
-                data.editBook(bookID, b1.title, b1.author_first_name, b1.author_last_name, b1.description, false);
-                //b1.lent = false;
+                Ilend_list l1;
+                //Changing the lent status of a specified book to false                        
+                l1 = data.GetLendList().SingleOrDefault(x => x.lend_listID == lendListID);
+                b1 = data.GetBooks().SingleOrDefault(x => x.bookID == l1.bookID);
+                data.editBook(l1.bookID, b1.title, b1.author_first_name, b1.author_last_name, b1.description, false);
 
                 //Removing lendlist record
-                data.removeLendList(bookID);
-                //db.lend_lists.DeleteOnSubmit(db.lend_lists.SingleOrDefault(x => x.bookID == bookID));
-
-                //db.SubmitChanges();
+                data.removeLendList(l1.lend_listID);                
             }
         }
     }

@@ -47,6 +47,7 @@ namespace MVVM.Commands
             lb.AuthorFirstName = null;
             lb.AuthorLastName = null;
             lb.Description = null;
+            lb.RefreshBooks();
         }
     }
 }
