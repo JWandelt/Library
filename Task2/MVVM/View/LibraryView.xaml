@@ -134,7 +134,11 @@
         </Grid>
 
         <Grid Grid.Row="0" Grid.Column="1">
-            <DataGrid x:Name="DataGridLent" AutoGenerateColumns="False" ItemsSource="{Binding LendLists}" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="400"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <DataGrid Grid.Row="1" x:Name="DataGridLent" AutoGenerateColumns="False" ItemsSource="{Binding LendLists}" VerticalAlignment="Center" Margin="100 10 10 10">
 
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding = "{Binding lend_listID}" Width="100"  IsReadOnly="True"/>
