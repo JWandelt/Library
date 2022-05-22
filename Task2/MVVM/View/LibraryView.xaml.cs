@@ -20,20 +20,11 @@ namespace MVVM.View
     /// <summary>
     /// Interaction logic for HelloWorldView.xaml
     /// </summary>
-    public partial class HelloWorldView : Window
+    public partial class LibraryView : Window
     {
-        AbstractService db = AbstractService.CreateLINQ2SQL();
-        List<IReader> r;
-        public HelloWorldView()
+        public LibraryView()
         {
-            //r = db.getAllReader();
-            //InitializeComponent();
-            //DataGridReaders.ItemsSource = r;
-            ////DataGridBooks.ItemsSource = t.Books;
-            //DataGridLent.ItemsSource = db.getAllLendList();
+            InitializeComponent();
         }
-
-       
-       
     }
 }

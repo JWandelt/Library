@@ -71,12 +71,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\AddBookCommand.cs" />
+    <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Model\BookModel.cs" />
     <Compile Include="Model\LendListModel.cs" />
     <Compile Include="Model\ReaderModel.cs" />
-    <Compile Include="ViewModel\HelloWorldViewModel.cs" />
-    <Compile Include="View\HelloWorldView.xaml.cs">
-      <DependentUpon>HelloWorldView.xaml</DependentUpon>
+    <Compile Include="ViewModel\LibraryViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\LibraryView.xaml.cs">
+      <DependentUpon>LibraryView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -90,13 +93,12 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\HelloWorldView.xaml">
+    <Page Include="View\LibraryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\HelloWorldModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
