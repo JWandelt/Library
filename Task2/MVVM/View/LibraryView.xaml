@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodel="clr-namespace:MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:LibraryViewModel}"
         mc:Ignorable="d"
-        Title="Basic Create Update Delete With MVVM"
+        Title="Library"
         Height="900" Width="1200"
         Background="#77216f">
 
@@ -64,19 +64,19 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="200"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Book ID" Margin="10 5 0 0"/>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Book ID" Margin="10 5 0 0" Foreground="White"/>
                     <TextBox Grid.Row="1" x:Name="IDBox" Text="{Binding BookID, UpdateSourceTrigger=PropertyChanged}" Margin="10 5 0 0"/>
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Title" Margin="10 5 0 0"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Title" Margin="10 5 0 0" Foreground="White"/>
                     <TextBox Grid.Row="3" Name="TitleBox" Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Margin="10 5 0 0"/>
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="First name" Margin="10 5 0 0"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="First name" Margin="10 5 0 0" Foreground="White"/>
                     <TextBox Grid.Row="5" x:Name="NameBox" Text="{Binding AuthorFirstName, UpdateSourceTrigger=PropertyChanged}" Margin="10 5 0 0"/>
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Last name" Margin="10 5 0 0"/>
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Last name" Margin="10 5 0 0" Foreground="White"/>
                     <TextBox Grid.Row="7" Text="{Binding AuthorLastName, UpdateSourceTrigger=PropertyChanged}" x:Name="SurnameBox" Margin="10 5 0 0"/>
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="Description" Margin="10 5 0 0"/>
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="Description" Margin="10 5 0 0" Foreground="White"/>
                     <TextBox Grid.Row="9" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" x:Name="textBox2" Margin="10 5 0 0"/>
                     <Button Grid.Row="10" x:Name="SurnamaeBox" Content="Add book" Command="{Binding AddBookCommand}" Margin="10 5 0 0"/>
                     <Button Grid.Row="11" x:Name="buttonEditBook" Content="Edit book" Margin="10 5 0 0" Command="{Binding EditBookCommand}"/>
-                    <TextBlock Grid.Row="12" Grid.Column="0" Text="Book ID" Margin="10 20 0 0"/>
+                    <TextBlock Grid.Row="12" Grid.Column="0" Text="Book ID" Margin="10 20 0 0" Foreground="White"/>
                     <TextBox Grid.Row="13" x:Name="removeBookBox" Text="{Binding BookIDToRemove, UpdateSourceTrigger=PropertyChanged}" Margin="10 5 0 0"/>
                     <Button Grid.Row="14" Name="buttonRemoveBook" Content="Remove book" Margin="10 5 0 0" Command="{Binding DeleteBookCommand}"/>
                 </Grid>
@@ -117,15 +117,15 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Reader ID" Margin="0 5 0 0"/>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Reader ID" Margin="0 5 0 0" Foreground="White"/>
                     <TextBox Grid.Row="1" Grid.Column="0" Margin="0 5 0 0" Text="{Binding ReaderID, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="First name" Margin="0 5 0 0"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="First name" Margin="0 5 0 0" Foreground="White"/>
                     <TextBox Grid.Row="3" Grid.Column="0" Margin="0 5 0 0" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Surname" Margin="0 5 0 0"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Surname" Margin="0 5 0 0" Foreground="White"/>
                     <TextBox Grid.Row="5" Grid.Column="0" Margin="0 5 0 0" Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}"/>
                     <Button Grid.Row="6" Grid.Column="0" Content="Add reader" Margin="0 5 0 0" Command="{Binding AddReaderCommand}"/>
                     <Button Grid.Row="7" Grid.Column="0" Content="Edit reader" Margin="0 5 0 0" Command="{Binding EditReaderCommand}"/>
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="Reader ID" Margin="0 20 0 0"/>
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="Reader ID" Margin="0 20 0 0" Foreground="White"/>
                     <TextBox Grid.Row="9" Grid.Column="0" Margin="0 5 0 0" Text="{Binding ReaderIDToremove, UpdateSourceTrigger=PropertyChanged}"/>
                     <Button Grid.Row="10" Grid.Column="0" Content="Remove reader" Margin="0 5 0 0" Command="{Binding DeleteReaderCommand}"/>
                 </Grid>
@@ -145,14 +145,16 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="0" Margin="100 0 0 0">
+            <Grid Grid.Row="0" Margin="80 0 0 0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="Book description" FontSize="25" HorizontalAlignment="Center" Margin="0 0 0 5"/>
-                <TextBlock Grid.Row="1" Text="{Binding SelectedBook.description}" Background="White" Padding="5" TextWrapping="Wrap" Width="300" Height="200"/>
-                
+                <TextBlock Grid.Row="0" Text="Book description" FontSize="25" HorizontalAlignment="Center" Margin="0 0 0 5" Foreground="White"/>
+                <Border Grid.Row="1" BorderThickness="5" BorderBrush="Black" Margin="20 0 0 0">
+                    <TextBlock  Text="{Binding SelectedBook.description}" Background="White" Padding="5" TextWrapping="Wrap" Width="300" Height="200"/>
+                </Border>
+
             </Grid>
             
             <DataGrid Grid.Row="1" x:Name="DataGridLent" AutoGenerateColumns="False" ItemsSource="{Binding LendLists}"  Margin="100 10 10 10">
@@ -179,8 +181,8 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Book ID" Margin="0 0 0 5"/>
-                    <TextBlock Grid.Row="0" Grid.Column="1" Text="Reader ID" Margin="25 0 0 5"/>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Book ID" Margin="0 0 0 5" Foreground="White"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="Reader ID" Margin="25 0 0 5" Foreground="White"/>
                     <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding BookIDToLease, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ReaderIDToLease, UpdateSourceTrigger=PropertyChanged}" Margin="25 0 0 0"/>
                     <Button Content="Lend a book" Command="{Binding LendABookCommand}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0 5 0 0"/>
@@ -191,7 +193,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="Lend ID" Margin="90 0 0 5"/>
+                    <TextBlock Grid.Row="0" Text="Lend ID" Margin="90 0 0 5" Foreground="White"/>
                     <TextBox Grid.Row="1" Text="{Binding BookIDToCancelLease, UpdateSourceTrigger=PropertyChanged}" Margin="90 0 0 0"/>
                     <Button Grid.Row="2" Content="Cancel lease" Command="{Binding CancelBookLeaseCommand}" Margin="90 5 0 0"/>
                 </Grid>
