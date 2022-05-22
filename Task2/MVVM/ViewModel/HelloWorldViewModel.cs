@@ -30,11 +30,7 @@ namespace MVVM.ViewModel
         {
             AbstractService abstractService = AbstractService.CreateLINQ2SQL();
             BookModel book = new BookModel(abstractService);
-            book.Service.addBook(TitleBox.Text, NameBox.Text, SurnameBox.Text, DescriptionBox.Text, false);
-            
-            
+            book.Service.addBook(TitleBox.Text, NameBox.Text, SurnameBox.Text, DescriptionBox.Text, false); 
         }
-
-
     }
 }
