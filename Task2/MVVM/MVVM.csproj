@@ -75,7 +75,9 @@
     <Compile Include="Commands\AddReaderCommand.cs" />
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\DeleteBookCommand.cs" />
+    <Compile Include="Commands\DeleteReaderCommand.cs" />
     <Compile Include="Commands\EditBookCommand.cs" />
+    <Compile Include="Commands\EditReaderCommand.cs" />
     <Compile Include="Model\BookModel.cs" />
     <Compile Include="Model\LendListModel.cs" />
     <Compile Include="Model\ReaderModel.cs" />

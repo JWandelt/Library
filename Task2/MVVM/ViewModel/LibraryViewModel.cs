@@ -25,6 +25,10 @@ namespace MVVM.ViewModel
             AddBookCommand = new AddBookCommand(this, b);
             DeleteBookCommand = new DeleteBookCommand(this, b);
             EditBookCommand = new EditBookCommand(this, b);
+            AddReaderCommand = new AddReaderCommand(this, r);
+            //EditReaderCommand = new EditReaderCommand(this, r);
+            //DeleteReaderCommand = new DeleteReaderCommand(this, r);
+
         }
         public List<IBook> Books { get { return b.Books; } }
         public List<IReader> Readers { get { return r.Readers; } }
