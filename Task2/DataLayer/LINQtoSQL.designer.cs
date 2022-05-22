@@ -97,7 +97,7 @@ namespace DataLayer
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.books")]
-	public partial class book : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class book : INotifyPropertyChanging, INotifyPropertyChanged, Ibook
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -307,7 +307,7 @@ namespace DataLayer
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.registered_readers")]
-	public partial class registered_reader : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class registered_reader : INotifyPropertyChanging, INotifyPropertyChanged, Iregistered_reader
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -445,7 +445,7 @@ namespace DataLayer
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.lend_list")]
-	public partial class lend_list : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class lend_list : INotifyPropertyChanging, INotifyPropertyChanged, Ilend_list
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);

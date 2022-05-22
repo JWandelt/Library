@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.Linq;
 
 namespace DataLayer
@@ -12,7 +13,5 @@ namespace DataLayer
         bool lent { get; set; }
         string title { get; set; }
 
-        event PropertyChangedEventHandler PropertyChanged;
-        event PropertyChangingEventHandler PropertyChanging;
     }
 }

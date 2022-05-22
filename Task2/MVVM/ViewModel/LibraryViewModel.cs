@@ -26,8 +26,8 @@ namespace MVVM.ViewModel
             DeleteBookCommand = new DeleteBookCommand(this, b);
             EditBookCommand = new EditBookCommand(this, b);
             AddReaderCommand = new AddReaderCommand(this, r);
-            //EditReaderCommand = new EditReaderCommand(this, r);
-            //DeleteReaderCommand = new DeleteReaderCommand(this, r);
+            EditReaderCommand = new EditReaderCommand(this, r);
+            DeleteReaderCommand = new DeleteReaderCommand(this, r);
 
         }
         public List<IBook> Books { get { return b.Books; } }
@@ -157,6 +157,20 @@ namespace MVVM.ViewModel
             {
                 _lastName = value;
                 OnPropertyChanged(nameof(LastName));
+            }
+        }
+
+        private decimal _readerIDToremove;
+        public decimal ReaderIDToremove
+        {
+            get
+            {
+                return _readerIDToremove;
+            }
+            set
+            {
+                _readerIDToremove = value;
+                OnPropertyChanged(nameof(ReaderIDToremove));
             }
         }
 
