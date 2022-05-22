@@ -34,5 +34,14 @@ namespace UnitTests
             Assert.AreEqual(datalayer.Reader[0].first_name, "Will");
             Assert.AreEqual(datalayer.Reader[0].last_name, "Smith");
         }
+        [TestMethod]
+        public void AddLendList()
+        {
+            var lendList = new LendList(1,2, 3);
+            datalayer.LendList.Add(lendList);
+            Assert.AreEqual(datalayer.LendList[0].lend_listID, 1);
+            Assert.AreEqual(datalayer.LendList[0].bookID ,2);
+            Assert.AreEqual(datalayer.LendList[0].readerID, 3);
+        }
     }
 }

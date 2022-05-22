@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Book.cs" />
     <Compile Include="DataLayerAPI.cs" />
+    <Compile Include="LendList.cs" />
     <Compile Include="Reader.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
