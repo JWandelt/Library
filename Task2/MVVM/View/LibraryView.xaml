@@ -66,13 +66,13 @@
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Book ID" Margin="10 5 0 0"/>
                     <TextBox Grid.Row="1" x:Name="IDBox" Text="{Binding BookID, UpdateSourceTrigger=PropertyChanged}" Margin="10 5 0 0"/>
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Title" Margin="10 5 0 0"/>
-                    <TextBox Grid.Row="3" x:Name="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Margin="10 5 0 0"/>
+                    <TextBox Grid.Row="3" Name="TitleBox" Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Margin="10 5 0 0"/>
                     <TextBlock Grid.Row="4" Grid.Column="0" Text="First name" Margin="10 5 0 0"/>
-                    <TextBox Grid.Row="5" x:Name="NameBox" Margin="10 5 0 0"/>
+                    <TextBox Grid.Row="5" x:Name="NameBox" Text="{Binding AuthorFirstName, UpdateSourceTrigger=PropertyChanged}" Margin="10 5 0 0"/>
                     <TextBlock Grid.Row="6" Grid.Column="0" Text="Last name" Margin="10 5 0 0"/>
-                    <TextBox Grid.Row="7" x:Name="SurnameBox" Margin="10 5 0 0"/>
+                    <TextBox Grid.Row="7" Text="{Binding AuthorLastName, UpdateSourceTrigger=PropertyChanged}" x:Name="SurnameBox" Margin="10 5 0 0"/>
                     <TextBlock Grid.Row="8" Grid.Column="0" Text="Description" Margin="10 5 0 0"/>
-                    <TextBox Grid.Row="9" x:Name="textBox2" Margin="10 5 0 0"/>
+                    <TextBox Grid.Row="9" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" x:Name="textBox2" Margin="10 5 0 0"/>
                     <Button Grid.Row="10" x:Name="SurnamaeBox" Content="Add book" Command="{Binding AddBookCommand}" Margin="10 5 0 0"/>
                     <Button Grid.Row="11" x:Name="buttonEditBook" Content="Edit book" Margin="10 5 0 0"/>
                     <TextBlock Grid.Row="12" Grid.Column="0" Text="Book ID" Margin="10 20 0 0"/>

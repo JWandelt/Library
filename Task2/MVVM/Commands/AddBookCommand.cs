@@ -23,7 +23,8 @@ namespace MVVM.Commands
 
         private void LibraryViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == nameof(LibraryViewModel.Title))
+            if(e.PropertyName == nameof(LibraryViewModel.Title) || e.PropertyName == nameof(LibraryViewModel.AuthorFirstName) || e.PropertyName == nameof(LibraryViewModel.AuthorLastName)
+              || e.PropertyName == nameof(LibraryViewModel.Description))
             {
                 OnCanExecutedChanged();
             }
@@ -31,12 +32,17 @@ namespace MVVM.Commands
 
         public override bool CanExecute(object parameter)
         {
-            return !string.IsNullOrEmpty(libraryViewModel.Title) && base.CanExecute(parameter);
+            return !string.IsNullOrEmpty(libraryViewModel.Title) 
+                && !string.IsNullOrEmpty(libraryViewModel.AuthorFirstName)
+                && !string.IsNullOrEmpty(libraryViewModel.AuthorLastName)
+                && !string.IsNullOrEmpty(libraryViewModel.Description)
+                && base.CanExecute(parameter);
         }
 
         public override void Execute(object parameter)
         {
-            b.Service.addBook(libraryViewModel.Title, "test", "test", "test", false);
+            b.Service.addBook(libraryViewModel.Title, libraryViewModel.AuthorFirstName, libraryViewModel.AuthorLastName, libraryViewModel.Description, false);
+            libraryViewModel.Title = null;
         }
     }
 }
