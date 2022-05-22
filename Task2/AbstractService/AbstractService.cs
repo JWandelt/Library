@@ -13,14 +13,14 @@ namespace Service
     {
         //CRUD operations abstract declaration
         public abstract void addBook(string title, string first_name, string last_name, string description, bool lent);
-        public abstract void removeBook(int id);
-        public abstract void editBook(int id, string title, string first_name, string last_name, string description, bool lent);
+        public abstract void removeBook(decimal id);
+        public abstract void editBook(decimal id, string title, string first_name, string last_name, string description, bool lent);
         public abstract void addReader(string first_name, string last_name);
-        public abstract void removeReader(int id);
-        public abstract void editReader(int id, string first_name, string last_name);
-        public abstract void addLendList(int bookID, int readerID);
-        public abstract void removeLendList(int id);
-        public abstract void editLendList(int id, int bookID, int readerID);
+        public abstract void removeReader(decimal id);
+        public abstract void editReader(decimal id, string first_name, string last_name);
+        public abstract void addLendList(decimal bookID, decimal readerID);
+        public abstract void removeLendList(decimal id);
+        public abstract void editLendList(decimal id, decimal bookID, decimal readerID);
         public abstract void lendABook(decimal bookID, decimal readerID);
         public abstract void cancelLease(decimal bookID);
         public abstract List<IBook> getAllBooks();
@@ -87,7 +87,7 @@ namespace Service
                 db.SubmitChanges();
             }
 
-            public override void addLendList(int bookID, int readerID)
+            public override void addLendList(decimal bookID, decimal readerID)
             {
                 lend_list l1 = new lend_list();
 
@@ -111,7 +111,7 @@ namespace Service
                 db.SubmitChanges();
             }
 
-            public override void editBook(int id, string title, string first_name, string last_name, string description, bool lent)
+            public override void editBook(decimal id, string title, string first_name, string last_name, string description, bool lent)
             {
                 book b1 = new book();
 
@@ -126,7 +126,7 @@ namespace Service
                 db.SubmitChanges();
             }
 
-            public override void editLendList(int id, int bookID, int readerID)
+            public override void editLendList(decimal id, decimal bookID, decimal readerID)
             {
                 lend_list l1 = new lend_list();
 
@@ -137,7 +137,7 @@ namespace Service
                 db.SubmitChanges();
             }
 
-            public override void editReader(int id, string first_name, string last_name)
+            public override void editReader(decimal id, string first_name, string last_name)
             {
                 registered_reader r1 = new registered_reader();
 
@@ -148,7 +148,7 @@ namespace Service
                 db.SubmitChanges();
             }
 
-            public override void removeBook(int id)
+            public override void removeBook(decimal id)
             {
                 book b1 = new book();
 
@@ -159,7 +159,7 @@ namespace Service
 
             }
 
-            public override void removeLendList(int id)
+            public override void removeLendList(decimal id)
             {
                 lend_list l1 = new lend_list();
 
@@ -169,7 +169,7 @@ namespace Service
                 db.SubmitChanges();
             }
 
-            public override void removeReader(int id)
+            public override void removeReader(decimal id)
             {
                 registered_reader r1 = new registered_reader();
 

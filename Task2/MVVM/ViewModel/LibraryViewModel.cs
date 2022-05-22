@@ -23,6 +23,12 @@ namespace MVVM.ViewModel
             r = new ReaderModel(service);
             l = new LendListModel(service);
             AddBookCommand = new AddBookCommand(this, b);
+            DeleteBookCommand = new DeleteBookCommand(this, b);
+            EditBookCommand = new EditBookCommand(this, b);
+            AddReaderCommand = new AddReaderCommand(this, r);
+            //EditReaderCommand = new EditReaderCommand(this, r);
+            //DeleteReaderCommand = new DeleteReaderCommand(this, r);
+
         }
         public List<IBook> Books { get { return b.Books; } }
         public List<IReader> Readers { get { return r.Readers; } }
@@ -98,6 +104,20 @@ namespace MVVM.ViewModel
             }
         }
 
+        private decimal _bookIDToRemove;
+        public decimal BookIDToRemove
+        {
+            get
+            {
+                return _bookIDToRemove;
+            }
+            set
+            {
+                _bookIDToRemove = value;
+                OnPropertyChanged(nameof(BookIDToRemove));
+            }
+        }
+
         private decimal _readerID;
         public decimal ReaderID
         {
@@ -112,7 +132,7 @@ namespace MVVM.ViewModel
             }
         }
 
-        public string _firstName;
+        private string _firstName;
         public string FirstName
         {
             get
@@ -154,5 +174,11 @@ namespace MVVM.ViewModel
             }
         }
         public ICommand AddBookCommand { get; }
+        public ICommand DeleteBookCommand { get; }
+        public ICommand EditBookCommand { get; }
+        public ICommand AddReaderCommand { get; }
+        public ICommand EditReaderCommand { get; }
+        public ICommand DeleteReaderCommand { get; }
+
     }
 }

@@ -8,7 +8,7 @@ using Service.IData;
 
 namespace MVVM.Model
 {
-    internal class ReaderModel
+    public class ReaderModel
     {
         private AbstractService service;
         public ReaderModel(AbstractService service)
