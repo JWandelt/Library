@@ -73,6 +73,8 @@
     </ApplicationDefinition>
     <Compile Include="Commands\AddBookCommand.cs" />
     <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Commands\DeleteBookCommand.cs" />
+    <Compile Include="Commands\EditBookCommand.cs" />
     <Compile Include="Model\BookModel.cs" />
     <Compile Include="Model\LendListModel.cs" />
     <Compile Include="Model\ReaderModel.cs" />

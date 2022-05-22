@@ -43,6 +43,9 @@ namespace MVVM.Commands
         {
             b.Service.addBook(libraryViewModel.Title, libraryViewModel.AuthorFirstName, libraryViewModel.AuthorLastName, libraryViewModel.Description, false);
             libraryViewModel.Title = null;
+            libraryViewModel.AuthorFirstName = null;
+            libraryViewModel.AuthorLastName = null;
+            libraryViewModel.Description = null;
         }
     }
 }

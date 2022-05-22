@@ -74,10 +74,10 @@
                     <TextBlock Grid.Row="8" Grid.Column="0" Text="Description" Margin="10 5 0 0"/>
                     <TextBox Grid.Row="9" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" x:Name="textBox2" Margin="10 5 0 0"/>
                     <Button Grid.Row="10" x:Name="SurnamaeBox" Content="Add book" Command="{Binding AddBookCommand}" Margin="10 5 0 0"/>
-                    <Button Grid.Row="11" x:Name="buttonEditBook" Content="Edit book" Margin="10 5 0 0"/>
+                    <Button Grid.Row="11" x:Name="buttonEditBook" Content="Edit book" Margin="10 5 0 0" Command="{Binding EditBookCommand}"/>
                     <TextBlock Grid.Row="12" Grid.Column="0" Text="Book ID" Margin="10 20 0 0"/>
-                    <TextBox Grid.Row="13" x:Name="removeBookBox" Margin="10 5 0 0"/>
-                    <Button Grid.Row="14" Name="buttonRemoveBook" Content="Remove book" Margin="10 5 0 0"/>
+                    <TextBox Grid.Row="13" x:Name="removeBookBox" Text="{Binding BookIDToRemove, UpdateSourceTrigger=PropertyChanged}" Margin="10 5 0 0"/>
+                    <Button Grid.Row="14" Name="buttonRemoveBook" Content="Remove book" Margin="10 5 0 0" Command="{Binding DeleteBookCommand}"/>
                 </Grid>
 
             </Grid>
