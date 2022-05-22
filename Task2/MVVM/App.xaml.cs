@@ -17,10 +17,11 @@ namespace MVVM
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            MainWindow = new HelloWorldView()
+            MainWindow = new LibraryView()
             {
                 DataContext = new LibraryViewModel()
             };
+
             MainWindow.Show();
             base.OnStartup(e);
         }

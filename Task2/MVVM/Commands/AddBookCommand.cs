@@ -17,6 +17,21 @@ namespace MVVM.Commands
         {
             this.libraryViewModel = libraryViewModel;
             this.b = b;
+
+            libraryViewModel.PropertyChanged += LibraryViewModel_PropertyChanged;
+        }
+
+        private void LibraryViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == nameof(LibraryViewModel.Title))
+            {
+                OnCanExecutedChanged();
+            }
+        }
+
+        public override bool CanExecute(object parameter)
+        {
+            return !string.IsNullOrEmpty(libraryViewModel.Title) && base.CanExecute(parameter);
         }
 
         public override void Execute(object parameter)
