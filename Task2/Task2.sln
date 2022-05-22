@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "AbstractService\Service.csproj", "{948DE96C-A9C5-48C1-B412-87F63DE2A4B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayerTests", "UnitTests\DataLayerTests.csproj", "{1D209C9D-1B33-4F0A-A79E-961F4FE10BBA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{948DE96C-A9C5-48C1-B412-87F63DE2A4B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{948DE96C-A9C5-48C1-B412-87F63DE2A4B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{948DE96C-A9C5-48C1-B412-87F63DE2A4B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D209C9D-1B33-4F0A-A79E-961F4FE10BBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D209C9D-1B33-4F0A-A79E-961F4FE10BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D209C9D-1B33-4F0A-A79E-961F4FE10BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D209C9D-1B33-4F0A-A79E-961F4FE10BBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

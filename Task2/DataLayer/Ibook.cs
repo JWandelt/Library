@@ -9,7 +9,6 @@ namespace DataLayer
         string author_last_name { get; set; }
         decimal bookID { get; set; }
         string description { get; set; }
-        EntitySet<lend_list> lend_lists { get; set; }
         bool lent { get; set; }
         string title { get; set; }
 
