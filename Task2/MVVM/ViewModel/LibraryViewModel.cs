@@ -13,10 +13,10 @@ namespace MVVM.ViewModel
 {
     public class LibraryViewModel : ViewModelBase
     {
-        AbstractService service = AbstractService.CreateLINQ2SQL();
-        BookModel b;
-        ReaderModel r;
-        LendListModel l;
+        private AbstractService service = AbstractService.CreateLINQ2SQL();
+        private BookModel b;
+        private ReaderModel r;
+        private LendListModel l;
         public LibraryViewModel()
         {
             b = new BookModel(service);
@@ -28,11 +28,14 @@ namespace MVVM.ViewModel
             AddReaderCommand = new AddReaderCommand(this, r);
             EditReaderCommand = new EditReaderCommand(this, r);
             DeleteReaderCommand = new DeleteReaderCommand(this, r);
+            LendABookCommand = new LendABookCommand(this, b, l);
+            CancelBookLeaseCommand = new CancelBookLeaseCommand(this, b, l);
 
         }
         public List<IBook> Books { get { return b.Books; } }
         public List<IReader> Readers { get { return r.Readers; } }
         public List<ILendList> LendLists { get { return l.LendLists; } }
+        public AbstractService Service { get { return service; } }
 
         private string _title;
         public string Title
@@ -187,12 +190,55 @@ namespace MVVM.ViewModel
                 OnPropertyChanged(nameof(LendListID));
             }
         }
+
+        private decimal _bookIDToLease;
+        public decimal BookIDToLease
+        {
+            get
+            {
+                return _bookIDToLease;
+            }
+            set
+            {
+                _bookIDToLease = value;
+                OnPropertyChanged(nameof(BookIDToLease));
+            }
+        }
+
+        private decimal _readerIDToLease;
+        public decimal ReaderIDToLease
+        {
+            get
+            {
+                return _readerIDToLease;
+            }
+            set
+            {
+                _readerIDToLease = value;
+                OnPropertyChanged(nameof(ReaderIDToLease));
+            }
+        }
+        private decimal _bookIDToCancelLease;
+        public decimal BookIDToCancelLease
+        {
+            get
+            {
+                return _bookIDToCancelLease;
+            }
+            set
+            {
+                _bookIDToCancelLease = value;
+                OnPropertyChanged(nameof(BookIDToCancelLease));
+            }
+        }
         public ICommand AddBookCommand { get; }
         public ICommand DeleteBookCommand { get; }
         public ICommand EditBookCommand { get; }
         public ICommand AddReaderCommand { get; }
         public ICommand EditReaderCommand { get; }
         public ICommand DeleteReaderCommand { get; }
+        public ICommand LendABookCommand { get; }
+        public ICommand CancelBookLeaseCommand { get; }
 
     }
 }

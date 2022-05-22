@@ -265,7 +265,8 @@ namespace Service
                 
                 //Changing the lent status of a specified book to true
                 b1 = data.GetBooks().SingleOrDefault(x => x.bookID == bookID);
-                b1.lent = true;
+                data.editBook(bookID, b1.title, b1.author_first_name, b1.author_last_name, b1.description, true);
+                //b1.lent = true;
 
                 //Creating a lendlist record
                 data.addLendList(findFreeLendListID(), bookID, readerID);
@@ -283,7 +284,8 @@ namespace Service
                 
                 //Changing the lent status of a specified book to false
                 b1 = data.GetBooks().SingleOrDefault(x => x.bookID == bookID);
-                b1.lent = false;
+                data.editBook(bookID, b1.title, b1.author_first_name, b1.author_last_name, b1.description, false);
+                //b1.lent = false;
 
                 //Removing lendlist record
                 data.removeLendList(bookID);

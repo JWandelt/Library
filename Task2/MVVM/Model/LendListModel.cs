@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MVVM.Model
 {
-    internal class LendListModel
+    public class LendListModel
     {
         public AbstractService service;
         public LendListModel(AbstractService service)

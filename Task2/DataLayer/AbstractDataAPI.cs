@@ -160,7 +160,7 @@ namespace DataLayer
 
             public override List<decimal> GetLendListIDs()
             {
-                var ids = (from registered_reader in db.registered_readers select registered_reader.readerID).ToList();
+                var ids = (from lend_list in db.lend_lists select lend_list.lend_listID).ToList();
                 
                 return ids;
             }
