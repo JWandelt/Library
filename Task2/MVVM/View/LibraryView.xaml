@@ -170,8 +170,8 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Book ID" Margin="0 0 0 5"/>
                     <TextBlock Grid.Row="0" Grid.Column="1" Text="Reader ID" Margin="25 0 0 5"/>
-                    <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding BookIDToLease}"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ReaderIDToLease}" Margin="25 0 0 0"/>
+                    <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding BookIDToLease, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ReaderIDToLease, UpdateSourceTrigger=PropertyChanged}" Margin="25 0 0 0"/>
                     <Button Content="Lend a book" Command="{Binding LendABookCommand}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0 5 0 0"/>
                 </Grid>
                 <Grid Grid.Column="1">
@@ -180,8 +180,8 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="Book ID" Margin="90 0 0 5"/>
-                    <TextBox Grid.Row="1" Text="{Binding BookIDToCancelLease}" Margin="90 0 0 0"/>
+                    <TextBlock Grid.Row="0" Text="Lend ID" Margin="90 0 0 5"/>
+                    <TextBox Grid.Row="1" Text="{Binding BookIDToCancelLease, UpdateSourceTrigger=PropertyChanged}" Margin="90 0 0 0"/>
                     <Button Grid.Row="2" Content="Cancel lease" Command="{Binding CancelBookLeaseCommand}" Margin="90 5 0 0"/>
                 </Grid>
             </Grid>
