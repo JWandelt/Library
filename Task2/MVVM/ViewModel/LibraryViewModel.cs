@@ -27,6 +27,7 @@ namespace MVVM.ViewModel
         public List<IBook> Books { get { return b.Books; } }
         public List<IReader> Readers { get { return r.Readers; } }
         public List<ILendList> LendLists { get { return l.LendLists; } }
+
         private string _title;
         public string Title
         {
@@ -41,6 +42,117 @@ namespace MVVM.ViewModel
             }
         }
 
+        private decimal _bookIDBook;
+        public decimal BookID
+        {
+            get
+            {
+                return _bookIDBook;
+            }
+            set
+            {
+                _bookIDBook = value;
+                OnPropertyChanged(nameof(BookID));
+            }
+        }
+
+        private string _authorFirstName;
+        public string AuthorFirstName
+        {
+            get
+            {
+                return _authorFirstName;
+            }
+            set
+            {
+                _authorFirstName = value;
+                OnPropertyChanged(nameof(AuthorFirstName));
+            }
+        }
+
+        private string _authorLastName;
+        public string AuthorLastName
+        {
+            get
+            {
+                return _authorLastName;
+            }
+            set
+            {
+                _authorLastName = value;
+                OnPropertyChanged(nameof(AuthorLastName));
+            }
+        }
+
+        private string _description;
+        public string Description
+        {
+            get
+            {
+                return _description;
+            }
+            set
+            {
+                _description = value;
+                OnPropertyChanged(nameof(Description));
+            }
+        }
+
+        private decimal _readerID;
+        public decimal ReaderID
+        {
+            get
+            {
+                return _readerID;
+            }
+            set
+            {
+                _readerID = value; 
+                OnPropertyChanged(nameof(ReaderID));
+            }
+        }
+
+        public string _firstName;
+        public string FirstName
+        {
+            get
+            {
+                return _firstName;
+            }
+            set
+            {
+                _firstName = value;
+                OnPropertyChanged(nameof(FirstName));
+            }
+        }
+
+        private string _lastName;
+        public string LastName
+        {
+            get
+            {
+                return _lastName;
+            }
+            set
+            {
+                _lastName = value;
+                OnPropertyChanged(nameof(LastName));
+            }
+        }
+
+        private decimal _lendListID;
+        public decimal LendListID
+        {
+            get
+            {
+                return _lendListID;
+            }
+            set
+            {
+                _lendListID = value;
+                OnPropertyChanged(nameof(LendListID));
+            }
+        }
         public ICommand AddBookCommand { get; }
     }
 }

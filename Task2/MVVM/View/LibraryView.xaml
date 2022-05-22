@@ -64,9 +64,9 @@
                         <ColumnDefinition Width="200"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Book ID" Margin="10 5 0 0"/>
-                    <TextBox Grid.Row="1" x:Name="IDBox" Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Margin="10 5 0 0"/>
+                    <TextBox Grid.Row="1" x:Name="IDBox" Text="{Binding BookID, UpdateSourceTrigger=PropertyChanged}" Margin="10 5 0 0"/>
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Title" Margin="10 5 0 0"/>
-                    <TextBox Grid.Row="3" x:Name="TitleBox" Margin="10 5 0 0"/>
+                    <TextBox Grid.Row="3" x:Name="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Margin="10 5 0 0"/>
                     <TextBlock Grid.Row="4" Grid.Column="0" Text="First name" Margin="10 5 0 0"/>
                     <TextBox Grid.Row="5" x:Name="NameBox" Margin="10 5 0 0"/>
                     <TextBlock Grid.Row="6" Grid.Column="0" Text="Last name" Margin="10 5 0 0"/>
@@ -136,14 +136,14 @@
         <Grid Grid.Row="0" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="400"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="400"/>
             </Grid.RowDefinitions>
             <DataGrid Grid.Row="1" x:Name="DataGridLent" AutoGenerateColumns="False" ItemsSource="{Binding LendLists}" VerticalAlignment="Center" Margin="100 10 10 10">
 
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding = "{Binding lend_listID}" Width="100"  IsReadOnly="True"/>
                     <DataGridTextColumn Header="BookID" Binding = "{Binding bookdID}" Width="100"  IsReadOnly="True"/>
-                    <DataGridTextColumn Header="ReaderID" Binding="{Binding Name}" Width="100"  IsReadOnly="True"/>
+                    <DataGridTextColumn Header="ReaderID" Binding="{Binding readerID}" Width="100"  IsReadOnly="True"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
