@@ -24,8 +24,5 @@ namespace UnitTests
         public decimal readerID { get { return _readerID; } set { _readerID = value; } }
         public string first_name { get { return _first_name; } set { _first_name = value; } }
         public string last_name { get { return _last_name; } set { _last_name = value; } }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public event PropertyChangingEventHandler PropertyChanging;
     }
 }

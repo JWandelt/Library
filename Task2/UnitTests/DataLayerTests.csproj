@@ -49,10 +49,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Book.cs" />
+    <Compile Include="TestData\Book.cs" />
     <Compile Include="DataLayerAPI.cs" />
-    <Compile Include="LendList.cs" />
-    <Compile Include="Reader.cs" />
+    <Compile Include="TestData\LendList.cs" />
+    <Compile Include="TestData\Reader.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

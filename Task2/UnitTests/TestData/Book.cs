@@ -34,8 +34,5 @@ namespace UnitTests
         public string author_last_name { get { return _author_last_name; } set { _author_last_name = value;} }
         public string author_first_name { get { return _author_first_name; } set { _author_first_name = value; } }
         public bool lent { get { return _lent; } set { _lent = value; } }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public event PropertyChangingEventHandler PropertyChanging;
     }
 }

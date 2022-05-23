@@ -24,11 +24,5 @@ namespace UnitTests
         public decimal bookID { get { return _bookID; } set { _bookID = value; } }
         public decimal lend_listID { get { return _lend_listID; } set { _lend_listID = value;} }
         public decimal readerID { get { return _readerID; } set { _readerID = value;} }
-
-        public book book { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public registered_reader registered_reader { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public event PropertyChangingEventHandler PropertyChanging;
     }
 }
