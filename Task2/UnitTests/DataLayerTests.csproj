@@ -53,7 +53,9 @@
     <Compile Include="DataLayerAPI.cs" />
     <Compile Include="TestData\LendList.cs" />
     <Compile Include="TestData\Reader.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Tests\BookTest.cs" />
+    <Compile Include="Tests\LendListTests.cs" />
+    <Compile Include="Tests\ReaderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
