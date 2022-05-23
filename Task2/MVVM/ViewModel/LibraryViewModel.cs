@@ -313,5 +313,5 @@ namespace MVVM.ViewModel
         public ICommand LendABookCommand { get; }
         public ICommand CancelBookLeaseCommand { get; }
 
-    }
+    } 
 }
