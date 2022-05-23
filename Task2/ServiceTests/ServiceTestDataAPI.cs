@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataLayer;
+using DataLayer.ServiceData;
 
-namespace PresentationLayerTests
+namespace ServiceTests
 {
-    public class DataLayerAPI : AbstractDataAPI
+    public class ServiceTestDataAPI : AbstractDataAPI
     {
         private List<Ibook> book = new List<Ibook>();
         private List<Iregistered_reader> reader = new List<Iregistered_reader>();
@@ -15,21 +16,21 @@ namespace PresentationLayerTests
 
         public List<Ibook> Book { get { return book; } set { book = value; } }
         public List<Iregistered_reader> Reader { get { return reader; } set { reader = value; } }
-        public List<Ilend_list> LendList { get { return LendList; } set { lendList = value; }  }
+        public List<Ilend_list> LendList { get { return lendList; } set { lendList = value; } }
 
         public override void addBook(decimal id, string title, string first_name, string last_name, string description, bool lent)
         {
-            //book.Add(new Book(id, title, first_name, last_name, description, false));
+            book.Add(new Book(id, title, first_name, last_name, description, false));
         }
 
         public override void addLendList(decimal id, decimal bookID, decimal readerID)
         {
-            //lendList.Add(new LendList(id, bookID, readerID));
+            lendList.Add(new LendList(id, bookID, readerID));
         }
 
         public override void addReader(decimal id, string first_name, string last_name)
         {
-            //reader.Add(new Reader(id, first_name, last_name));
+            reader.Add(new Reader(first_name, last_name, id));
         }
 
         public override void editBook(decimal id, string title, string first_name, string last_name, string description, bool lent)

@@ -81,6 +81,9 @@
     <Compile Include="Commands\EditReaderCommand.cs" />
     <Compile Include="Commands\LendABookCommand.cs" />
     <Compile Include="Model\BookModel.cs" />
+    <Compile Include="Model\Interfaces\IBookModel.cs" />
+    <Compile Include="Model\Interfaces\ILendListModel.cs" />
+    <Compile Include="Model\Interfaces\IReaderModel.cs" />
     <Compile Include="Model\LendListModel.cs" />
     <Compile Include="Model\ReaderModel.cs" />
     <Compile Include="ViewModel\ILibraryViewModel.cs" />

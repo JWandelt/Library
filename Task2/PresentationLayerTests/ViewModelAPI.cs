@@ -54,10 +54,6 @@ namespace PresentationLayerTests
             {
                 return data.Description;
             }
-            public override string ReadBookId()
-            {
-                return data.BookId;
-            }
             public override ICommand AddBookCommand(decimal id, string title, string first_name, string last_name, string description, bool lent)
             {
                 dataLayer.addBook(id, title, first_name, last_name, description, lent);

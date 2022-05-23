@@ -27,14 +27,21 @@ namespace PresentationLayerTests
 
             AddBookCommand = new addBookCommand(books[0], this);
             DeleteBookCommand = new removeBookCommand(this, BookID);
+            EditBookCommand = new editBookCommand(this, "test");
+            AddReaderCommand = new addReaderCommand(this);
+            DeleteReaderCommand = new removeReaderCommand(this);
+            EditReaderCommand = new editReaderCommand(this);
+            LendABookCommand = new addLendListCommand(this);
+            CancelBookLeaseCommand = new removeLendListCommand(this);
+
         }
-        public string AuthorFirstName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string AuthorLastName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public decimal BookID { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public decimal BookIDToCancelLease { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public decimal BookIDToLease { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public decimal BookIDToRemove { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public List<IBook> Books { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string AuthorFirstName { get { return books[0].author_first_name; } set { books[0].author_first_name = value; } }
+        public string AuthorLastName { get { return books[0].author_last_name; } set { books[0].author_last_name = value; } }
+        public decimal BookID { get { return books[0].bookID; } set { books[0].bookID = value; } }
+        public decimal BookIDToCancelLease { get { return books[0].bookID; } set { books[0].bookID = value; } }
+        public decimal BookIDToLease { get { return books[0].bookID; } set { books[0].bookID = value; } }
+        public decimal BookIDToRemove { get { return books[0].bookID; } set { books[0].bookID = value; } }
+        public List<IBook> Books { get { return books; } set { books = value; } }
 
         public ICommand CancelBookLeaseCommand { get; set; }
         public ICommand AddBookCommand { get; set; }
@@ -45,18 +52,18 @@ namespace PresentationLayerTests
         public ICommand EditReaderCommand { get; set; }
         public ICommand DeleteReaderCommand { get; set; }
 
-        public string Description { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string FirstName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string LastName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public decimal LendListID { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public List<ILendList> LendLists { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public decimal ReaderID { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public decimal ReaderIDToLease { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public decimal ReaderIDToremove { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public List<IReader> Readers { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public IBook SelectedBook { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Description { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public decimal LendListID { get; set; }
+        public List<ILendList> LendLists { get { return lend_list; } set { lend_list = value; } }   
+        public decimal ReaderID { get; set; }
+        public decimal ReaderIDToLease { get; set; }
+        public decimal ReaderIDToremove { get; set; }
+        public List<IReader> Readers { get { return registered_readers; } set { registered_readers = value; } }
+        public IBook SelectedBook { get; set; }
         public AbstractService Service => throw new NotImplementedException();
-        public string Title { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Title { get; set; }
 
         public void RefreshBooks()
         {
@@ -75,16 +82,11 @@ namespace PresentationLayerTests
 
         public class addBookCommand : TestCommandBase
         {
-            private IBook b;
+            private Book b;
             private ILibraryViewModel lb;
             public addBookCommand(IBook book, ILibraryViewModel libraryViewModel)
             {
-                b.bookID = book.bookID;
-                b.title = book.title;
-                b.author_first_name = book.author_first_name;
-                b.author_last_name = book.author_last_name;
-                b.description = book.description;
-                b.lent = false;
+   
                 lb = libraryViewModel;
             }
             public override void Execute(object parameter)
@@ -124,5 +126,102 @@ namespace PresentationLayerTests
                 lb.Books.SingleOrDefault(x => x.bookID == 0).title = t;
             }
         }
+
+        public class addReaderCommand : TestCommandBase
+        {
+            private ILibraryViewModel lb;
+            private IReader r;
+
+            public addReaderCommand(ILibraryViewModel libraryViewModel)
+            {
+                lb = libraryViewModel;
+            }
+
+            public override void Execute(object parameter)
+            {
+                r.readerID = lb.ReaderID;
+                r.first_name = lb.FirstName;
+                r.last_name = lb.LastName;
+                lb.Readers.Add(r);
+            }
+        }
+
+        public class removeReaderCommand : TestCommandBase
+        {
+            public ILibraryViewModel lb;
+
+            public removeReaderCommand(ILibraryViewModel libraryViewModel)
+            {
+                lb = libraryViewModel;
+            }
+
+            public override void Execute(object parameter)
+            {
+                lb.Readers.Remove(lb.Readers[0]);
+            }
+        }
+
+        public class editReaderCommand : TestCommandBase
+        {
+            private ILibraryViewModel lb;
+            public editReaderCommand(ILibraryViewModel libraryViewModel)
+            {
+                lb = libraryViewModel;
+            }
+
+            public override void Execute(object parameter)
+            {
+                lb.Readers[0].last_name = "test";
+            }
+        }
+
+        public class addLendListCommand : TestCommandBase
+        {
+            private ILibraryViewModel lb;
+            private ILendList r;
+
+            public addLendListCommand(ILibraryViewModel libraryViewModel)
+            {
+                lb = libraryViewModel;
+            }
+
+            public override void Execute(object parameter)
+            {
+                r.lend_listID = lb.LendListID;
+                r.bookID = lb.BookID;
+                r.readerID = lb.ReaderID;
+                lb.LendLists.Add(r);
+            }
+        }
+
+        public class removeLendListCommand : TestCommandBase
+        {
+            public ILibraryViewModel lb;
+
+            public removeLendListCommand(ILibraryViewModel libraryViewModel)
+            {
+                lb = libraryViewModel;
+            }
+
+            public override void Execute(object parameter)
+            {
+                lb.LendLists.Remove(lb.LendLists[0]);
+            }
+        }
+
+        public class editLendListCommand : TestCommandBase
+        {
+            private ILibraryViewModel lb;
+            public editLendListCommand(ILibraryViewModel libraryViewModel)
+            {
+                lb = libraryViewModel;
+            }
+
+            public override void Execute(object parameter)
+            {
+                lb.LendLists[0].readerID = 0;
+            }
+        }
+
     }
 }

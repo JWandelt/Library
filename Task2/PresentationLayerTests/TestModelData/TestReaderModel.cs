@@ -1,17 +1,18 @@
-﻿using System;
+﻿using MVVM.Model;
+using Service;
+using Service.IData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Service;
-using Service.IData;
 
-namespace MVVM.Model
+namespace PresentationLayerTests.TestModelData
 {
-    public class ReaderModel : IReaderModel
+    public class TestReaderModel : IReaderModel
     {
         private AbstractService service;
-        public ReaderModel(AbstractService service)
+        public TestReaderModel(AbstractService service)
         {
             this.service = service;
         }

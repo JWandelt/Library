@@ -1,4 +1,5 @@
-﻿using Service;
+﻿using MVVM.Model;
+using Service;
 using Service.IData;
 using System;
 using System.Collections.Generic;
@@ -6,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVVM.Model
+namespace PresentationLayerTests.TestModelData
 {
-    public class LendListModel : ILendListModel
+    public class TestLendListModel : ILendListModel
     {
         public AbstractService service;
-        public LendListModel(AbstractService service)
+        public TestLendListModel(AbstractService service)
         {
             this.service = service;
         }
