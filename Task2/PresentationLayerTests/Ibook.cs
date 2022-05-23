@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data.Linq;
-
-namespace DataLayer
+﻿namespace DataLayer
 {
     public interface Ibook
     {
