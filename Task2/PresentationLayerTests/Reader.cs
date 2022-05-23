@@ -1,4 +1,5 @@
 ﻿using DataLayer;
+using Service.IData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PresentationLayerTests
 {
-    public class Reader : Iregistered_reader
+    public class Reader : IReader
     {
         private decimal _readerID;
         private string _first_name;

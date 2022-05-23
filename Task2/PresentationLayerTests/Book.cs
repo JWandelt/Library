@@ -1,4 +1,5 @@
 ﻿using DataLayer;
+using Service.IData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PresentationLayerTests
 {
-    public class Book : Ibook
+    public class Book : IBook
     {
         private decimal _bookID;
         private string _title;

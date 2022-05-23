@@ -26,10 +26,10 @@ namespace PresentationLayerTests
             Assert.AreEqual(ViewModel.ReadDescription(), "TestDescription");
             
         }
-        public void TestReader()
-        {
-            Assert.AreEqual(ViewModel.)
+        //public void TestReader()
+        //{
+        //    Assert.AreEqual(ViewModel.)
 
-        }
+        //}
     }
 }

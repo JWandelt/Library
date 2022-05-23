@@ -1,4 +1,5 @@
 ﻿using DataLayer;
+using Service.IData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PresentationLayerTests
 {
-    public class LendList : Ilend_list
+    public class LendList : ILendList
     {
         private decimal _lend_listID;
         private decimal _bookID;
