@@ -18,7 +18,7 @@ namespace UnitTests
         private string _author_last_name;
         private bool _lent;
 
-        public Book(decimal bookID, string title, string description, string author_last_name, string author_first_name, bool lent)
+        public Book(decimal bookID, string title, string author_first_name, string author_last_name, string description, bool lent)
         {
             this.bookID = bookID;
             this.title = title;
