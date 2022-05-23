@@ -83,6 +83,7 @@
     <Compile Include="Model\BookModel.cs" />
     <Compile Include="Model\LendListModel.cs" />
     <Compile Include="Model\ReaderModel.cs" />
+    <Compile Include="ViewModel\ILibraryViewModel.cs" />
     <Compile Include="ViewModel\LibraryViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\LibraryView.xaml.cs">

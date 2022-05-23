@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayerTests", "UnitTests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayerTests", "PresentationLayerTests\PresentationLayerTests.csproj", "{7D411688-727B-41A0-9181-04C080F00DB4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLayerTests", "ServiceLayerTests\ServiceLayerTests.csproj", "{0EAF5AB0-C11A-42B5-B271-EDD2C92D3991}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7D411688-727B-41A0-9181-04C080F00DB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D411688-727B-41A0-9181-04C080F00DB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D411688-727B-41A0-9181-04C080F00DB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EAF5AB0-C11A-42B5-B271-EDD2C92D3991}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EAF5AB0-C11A-42B5-B271-EDD2C92D3991}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EAF5AB0-C11A-42B5-B271-EDD2C92D3991}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EAF5AB0-C11A-42B5-B271-EDD2C92D3991}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -132,7 +132,7 @@ namespace DataLayer
                 List<book> books = db.books.ToList();
                 List<Ibook> result = new List<Ibook>();
 
-                foreach(book book in books)
+                foreach (book book in books)
                 {
                     result.Add(new Book(book.bookID, book.title, book.author_first_name, book.author_last_name, book.description, book.lent));
                 }
@@ -150,7 +150,7 @@ namespace DataLayer
                 List<lend_list> lend_list = db.lend_lists.ToList();
                 List<Ilend_list> result = new List<Ilend_list>();
 
-                foreach(lend_list l in lend_list)
+                foreach (lend_list l in lend_list)
                 {
                     result.Add(new LendList(l.bookID, l.lend_listID, l.readerID));
                 }
@@ -161,7 +161,7 @@ namespace DataLayer
             public override List<decimal> GetLendListIDs()
             {
                 var ids = (from lend_list in db.lend_lists select lend_list.lend_listID).ToList();
-                
+
                 return ids;
             }
 
@@ -215,7 +215,7 @@ namespace DataLayer
                 db.SubmitChanges();
             }
 
-            
+
         }
     }
 }

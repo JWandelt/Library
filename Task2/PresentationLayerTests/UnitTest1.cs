@@ -7,17 +7,29 @@ namespace PresentationLayerTests
     [TestClass]
     public class UnitTest1
     {
-        [TestMethod]
-        public void TestWithDataGenerator()
+        DataGenerator data;
+        DataLayerAPI dataLayer;
+        ViewModelAbstractAPI.ViewModelAPI ViewModel;
+      [TestInitialize]
+        public void setup()
         {
-            DataGenerator data = new DataGenerator();
-            DataLayerAPI dataLayer = new DataLayerAPI();
-            ViewModelAbstractAPI.ViewModelAPI ViewModel = new ViewModelAbstractAPI.ViewModelAPI(dataLayer,data);
+            data = new DataGenerator();
+            dataLayer = new DataLayerAPI();
+            ViewModel = new ViewModelAbstractAPI.ViewModelAPI(dataLayer, data);
+        }
+        [TestMethod]
+        public void TestBook()
+        {
             Assert.AreEqual(ViewModel.ReadTitle(), "TestTitle");
             Assert.AreEqual(ViewModel.ReadFirstName(), "TestFirstName");
             Assert.AreEqual(ViewModel.ReadLastName(), "TestLastName");
             Assert.AreEqual(ViewModel.ReadDescription(), "TestDescription");
             
+        }
+        public void TestReader()
+        {
+            Assert.AreEqual(ViewModel.)
+
         }
     }
 }

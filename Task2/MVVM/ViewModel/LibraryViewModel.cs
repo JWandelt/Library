@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace MVVM.ViewModel
 {
-    public class LibraryViewModel : ViewModelBase
+    public class LibraryViewModel : ViewModelBase, ILibraryViewModel
     {
         private AbstractService service = AbstractService.CreateLINQ2SQL();
         private BookModel b;
@@ -22,7 +22,7 @@ namespace MVVM.ViewModel
         private List<IBook> books = new List<IBook>();
         private List<ILendList> lendLists = new List<ILendList>();
         private IBook selectedBook;
-        
+
         public LibraryViewModel()
         {
             b = new BookModel(service);
@@ -52,12 +52,12 @@ namespace MVVM.ViewModel
                 OnPropertyChanged(nameof(Books));
             }
         }
-        public List<IReader> Readers 
-        { 
-            get 
-            { 
-                return readers; 
-            } 
+        public List<IReader> Readers
+        {
+            get
+            {
+                return readers;
+            }
             set
             {
                 readers = value;
@@ -85,7 +85,7 @@ namespace MVVM.ViewModel
             }
             set
             {
-                if(selectedBook != value)
+                if (selectedBook != value)
                 {
                     selectedBook = value;
                     OnPropertyChanged(nameof(SelectedBook));
@@ -113,13 +113,13 @@ namespace MVVM.ViewModel
         private string _title;
         public string Title
         {
-            get 
-            { 
-                return _title; 
+            get
+            {
+                return _title;
             }
-            set 
-            { 
-                _title = value; 
+            set
+            {
+                _title = value;
                 OnPropertyChanged(nameof(Title));
             }
         }
@@ -203,7 +203,7 @@ namespace MVVM.ViewModel
             }
             set
             {
-                _readerID = value; 
+                _readerID = value;
                 OnPropertyChanged(nameof(ReaderID));
             }
         }
@@ -313,5 +313,5 @@ namespace MVVM.ViewModel
         public ICommand LendABookCommand { get; }
         public ICommand CancelBookLeaseCommand { get; }
 
-    } 
+    }
 }

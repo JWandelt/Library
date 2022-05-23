@@ -32,6 +32,7 @@ namespace PresentationLayerTests
             DataGenerator data;
             DataLayerAPI dataLayer;
             ICommand TestCommand;
+
             public ViewModelAPI(DataLayerAPI dataLayer, DataGenerator data)
             {
                 this.dataLayer = dataLayer;
@@ -53,17 +54,21 @@ namespace PresentationLayerTests
             {
                 return data.Description;
             }
+            public override string ReadBookId()
+            {
+                return data.BookId;
+            }
             public override ICommand AddBookCommand(decimal id, string title, string first_name, string last_name, string description, bool lent)
             {
-
+                dataLayer.addBook(id, title, first_name, last_name, description, lent);
                 return TestCommand;
                
             }
             public override ICommand DeleteBookCommand(decimal id)
             {
 
+                dataLayer.removeBook(id);
                 return TestCommand;
-
             }
         }
 

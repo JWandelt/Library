@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7D411688-727B-41A0-9181-04C080F00DB4}</ProjectGuid>
+    <ProjectGuid>{0EAF5AB0-C11A-42B5-B271-EDD2C92D3991}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PresentationLayerTests</RootNamespace>
-    <AssemblyName>PresentationLayerTests</AssemblyName>
+    <RootNamespace>ServiceLayerTests</RootNamespace>
+    <AssemblyName>ServiceLayerTests</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -49,33 +49,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Book.cs" />
-    <Compile Include="DataGenerator.cs" />
-    <Compile Include="DataLayerAPI.cs" />
-    <Compile Include="IDataGenerator.cs" />
-    <Compile Include="LendList.cs" />
-    <Compile Include="Reader.cs" />
-    <Compile Include="TestViewModel.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModelAPI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AbstractService\Service.csproj">
-      <Project>{948de96c-a9c5-48c1-b412-87f63de2a4b2}</Project>
-      <Name>Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
-      <Project>{1821977e-057f-41b5-a6d0-7ad14ba1345e}</Project>
-      <Name>DataLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MVVM\MVVM.csproj">
-      <Project>{46426480-ee36-44c4-8fb0-8115eef1717f}</Project>
-      <Name>MVVM</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
