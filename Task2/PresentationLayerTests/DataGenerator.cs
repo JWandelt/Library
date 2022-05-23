@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PresentationLayerTests
 {
-    public class DataGenerator
+    public class DataGenerator : IDataGenerator
     {
         string _Title = "TestTitle";
         string _FirstName = "TestFirstName";
@@ -18,5 +18,5 @@ namespace PresentationLayerTests
         public string Lastname { get { return _LastName; } set { _LastName = value; } }
         public string Description { get { return _Description; } set { _Description = value; } }
 
-    } 
+    }
 }

@@ -29,31 +29,33 @@ namespace PresentationLayerTests
 
         public class ViewModelAPI : ViewModelAbstractAPI
         {
-            DataGenerator Data;
+            DataGenerator data;
+            DataLayerAPI dataLayer;
             ICommand TestCommand;
-            
-            public ViewModelAPI(DataGenerator Data)
+            public ViewModelAPI(DataLayerAPI dataLayer, DataGenerator data)
             {
-                this.Data = Data;
+                this.dataLayer = dataLayer;
+                this.data = data;
             }
             public override string ReadTitle()
             {
-                return Data.Title;
+                return data.Title;
             }
             public override string ReadFirstName()
             {
-                return Data.Firstname;
+                return data.Firstname;
             }
             public override string ReadLastName()
             {
-                return Data.Lastname;
+                return data.Lastname;
             }  
             public override string ReadDescription()
             {
-                return Data.Lastname;
+                return data.Description;
             }
             public override ICommand AddBookCommand(decimal id, string title, string first_name, string last_name, string description, bool lent)
             {
+
                 return TestCommand;
                
             }

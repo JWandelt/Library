@@ -10,8 +10,9 @@ namespace PresentationLayerTests
         [TestMethod]
         public void TestWithDataGenerator()
         {
-            DataGenerator Data = new DataGenerator();
-            ViewModelAbstractAPI.ViewModelAPI ViewModel = new ViewModelAbstractAPI.ViewModelAPI(Data);
+            DataGenerator data = new DataGenerator();
+            DataLayerAPI dataLayer = new DataLayerAPI();
+            ViewModelAbstractAPI.ViewModelAPI ViewModel = new ViewModelAbstractAPI.ViewModelAPI(dataLayer,data);
             Assert.AreEqual(ViewModel.ReadTitle(), "TestTitle");
             Assert.AreEqual(ViewModel.ReadFirstName(), "TestFirstName");
             Assert.AreEqual(ViewModel.ReadLastName(), "TestLastName");
