@@ -49,10 +49,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataGenerator.cs" />
     <Compile Include="Ibook.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModelAPI.cs" />
+    <Compile Include="ViewModelAPIBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
